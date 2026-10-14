@@ -1,1 +1,1 @@
-# art3512026
+# ART351 UX Design Theory
