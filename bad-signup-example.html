@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#061624">
+<title>Campus Maker Night — Create • Share • Learn • Belong</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+  :root{--night:#081625;--paper:#f6f2e9;--ink:#182333;--pink:#ff49bd;--yellow:#ffdd2c;--blue:#51d8fb;--purple:#963ffb;--mint:#b3f5c2;--line:#d9d3c8}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);font:16px/1.48 'DM Sans',Arial,sans-serif;background:var(--night)}
+  button,input,select{font:inherit}
+  button,a{cursor:pointer}
+  button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+  a{color:inherit}
+  .site{overflow:hidden}
+  .topbar{background:#e8f5ff;color:#172230;padding:7px 20px;font-size:11px;letter-spacing:.1em;text-align:center;text-transform:uppercase;font-weight:900}
+  .topbar span{background:var(--yellow);padding:1px 7px;margin-left:7px}
+  .header{background:#061624;position:relative;z-index:9;color:#fff;border-bottom:4px solid var(--pink)}
+  .header:before,.hero:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#ffffff24 .75px,transparent .75px);background-size:14px 14px;opacity:.2}
+  .nav-wrap{max-width:1300px;margin:auto;min-height:94px;padding:15px 23px;display:flex;gap:18px;align-items:center;justify-content:space-between;position:relative}
+  .logo{display:flex;align-items:center;gap:9px;text-decoration:none;min-width:230px}
+  .logo-gear{font-size:43px;line-height:1;color:var(--blue);transform:rotate(-13deg)}
+  .logo-text{line-height:.92;letter-spacing:-.04em;text-transform:uppercase;font-weight:1000;font-size:21px;transform:rotate(-3deg)}
+  .logo-text em{font-style:normal;color:var(--yellow)}
+  .logo small{display:block;font-size:10px;letter-spacing:.15em;color:#cdd8e7;font-weight:700;margin-top:7px}
+  .nav-items{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .nav-items a{text-decoration:none;color:white;font-weight:900;font-size:14px;padding:8px 12px;transform:rotate(-2deg);background:#173448;box-shadow:3px 3px #0006}
+  .nav-items a:nth-child(1){background:#9121f3;transform:rotate(3deg)}
+  .nav-items a:nth-child(3){background:var(--yellow);color:#101010;transform:rotate(-5deg);font-size:16px}
+  .nav-items a:nth-child(5){background:#103e4b;transform:rotate(3deg)}
+  .social{font-size:21px;letter-spacing:9px;white-space:nowrap;color:#ff5fc7;font-weight:900}
+  .hero{color:white;min-height:465px;position:relative;background:
+    linear-gradient(103deg,#061624eb 0%,#061624e2 43%,#07162873 79%),
+    radial-gradient(ellipse at 88% 32%,#713fc4 0%,transparent 46%),
+    repeating-linear-gradient(43deg,#123149 0px,#123149 29px,#071c2d 30px,#071c2d 59px);border-bottom:8px solid var(--yellow)}
+  .hero .orb{position:absolute;border-radius:50%;filter:blur(30px);opacity:.4;pointer-events:none}
+  .hero .orb.one{width:320px;height:210px;background:#964df9;left:52%;top:24%}
+  .hero .orb.two{width:300px;height:220px;background:#27bbd3;right:-70px;bottom:7%}
+  .hero-in{max-width:1220px;margin:auto;padding:45px 24px 49px;display:grid;grid-template-columns:1.25fr .75fr;gap:15px;position:relative;z-index:1}
+  .event-tag{font-weight:900;letter-spacing:.16em;color:#c0e8f2;font-size:13px;margin-bottom:19px}
+  .hero h1{font-family:'Space Grotesk',Arial,sans-serif;max-width:790px;font-size:clamp(60px,8.1vw,118px);line-height:.85;margin:0;text-transform:uppercase;letter-spacing:-.075em;font-weight:900;text-shadow:5px 7px 0 #0008;transform:rotate(-3deg)}
+  .hero h1 .a{color:#ffe51d;display:block;text-decoration:underline;text-decoration-color:#ff54ba;text-decoration-thickness:8px;text-underline-offset:-9px}
+  .hero h1 .b{color:#58ddff;display:inline-block}
+  .hero h1 .c{color:#ff5ab7;display:inline-block;margin-left:9px}
+  .tape{display:inline-block;background:#f5eff1;color:#0b1930;font-size:14px;font-weight:1000;text-transform:uppercase;padding:5px 15px;margin:18px 0;transform:rotate(-4deg);letter-spacing:.04em}
+  .scribble{color:#ffeb32;font-size:24px;font-weight:1000;line-height:1.08;transform:rotate(10deg);position:absolute;left:52%;top:67%;text-align:center;text-shadow:1px 3px #111}
+  .hero-side{align-self:start;margin-top:45px;position:relative}
+  .burst{display:flex;align-items:center;justify-content:center;text-align:center;width:190px;height:115px;background:var(--yellow);color:#000;clip-path:polygon(0% 24%,11% 23%,7% 0%,26% 12%,42% 0%,56% 15%,78% 0%,84% 18%,100% 20%,87% 48%,100% 74%,76% 74%,75% 100%,52% 87%,38% 99%,22% 80%,0% 86%,12% 55%);font-weight:1000;line-height:1.03;font-size:19px;transform:rotate(12deg);position:absolute;top:-40px;right:22px}
+  .promo{border:4px solid #fff;background:#422477;padding:19px 22px 25px;color:#fff;box-shadow:12px 13px #0007;transform:rotate(3deg);margin-top:90px;max-width:380px}
+  .promo h2{font-size:33px;line-height:1.02;margin:0 0 8px;transform:rotate(-3deg)}
+  .promo p{color:#ffe84b;font-weight:800;font-size:20px;line-height:1.2}
+  .action{background:var(--yellow);border:0;border-radius:5px;padding:12px 24px;color:#131616;font-weight:1000;box-shadow:5px 5px #0006;text-transform:uppercase}
+  .action:hover{filter:brightness(1.06)}
+  .promo .action{width:100%;font-size:17px}
+  .hero-spark{position:absolute;font-size:50px;color:var(--yellow);text-shadow:2px 3px #111}
+  .hero-spark.one{top:36px;left:8%}.hero-spark.two{top:130px;right:26%;color:var(--pink)}.hero-spark.three{bottom:35px;right:7%;color:var(--blue)}
+  .main-background{background:var(--paper);position:relative}
+  .main-background:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#1320280d .65px,transparent .65px);background-size:6px 6px}
+  .container{max-width:1220px;margin:auto;padding:24px 24px 60px;position:relative}
+  .grid{display:grid;grid-template-columns:minmax(0,1fr) 275px;gap:19px}
+  .primary{min-width:0}
+  .label-stripe{font-size:13px;text-transform:uppercase;letter-spacing:.06em;font-weight:1000;display:inline-block;padding:6px 13px;background:var(--pink);transform:rotate(-1.3deg);margin:0 0 12px}
+  .intro h2{font-size:clamp(26px,3.4vw,44px);line-height:1.07;letter-spacing:-.06em;margin:4px 0 10px;font-weight:1000;text-transform:uppercase}
+  .intro h2 b{color:#1762a2}.intro h2 strong{color:#ed2b97}
+  .intro p{max-width:720px;font-size:15px;margin:5px 0 21px}
+  .eventfacts{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:6px;padding:13px 0 22px;border-bottom:3px dashed #939ca3}
+  .fact{display:flex;align-items:start;gap:9px;font-size:13px;line-height:1.25;border-right:1px dotted #adb2bb;padding:0 10px 0 0}
+  .fact:last-child{border:0}.fact .glyph{font-size:29px}.fact b{display:block;font-size:15px;color:#0a243d}
+  .workshops{margin-top:27px}
+  .workshops .label-stripe{background:#d29cfc}
+  .workshop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:5px}
+  .workshop{background:#fff;border:2px solid #d2d5d6;padding:6px 6px 12px;box-shadow:3px 4px #0d19241c}
+  .workshop .visual{height:104px;display:flex;align-items:center;justify-content:center;font-size:59px;position:relative;overflow:hidden;border:2px solid #142736}
+  .workshop .visual:before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,#ffffff19 0,#ffffff19 2px,transparent 2px,transparent 17px)}
+  .workshop .visual span{position:relative;z-index:1;filter:drop-shadow(4px 5px 0 #0005)}
+  .workshop:nth-child(1) .visual{background:linear-gradient(135deg,#ef8f45,#c0412a)}
+  .workshop:nth-child(2) .visual{background:linear-gradient(135deg,#344acb,#3bcccf)}
+  .workshop:nth-child(3) .visual{background:linear-gradient(135deg,#201f33,#835cce)}
+  .workshop:nth-child(4) .visual{background:linear-gradient(135deg,#ef9aa0,#eac12c)}
+  .workshop:nth-child(5) .visual{background:linear-gradient(135deg,#122533,#278d89)}
+  .workshop:nth-child(6) .visual{background:linear-gradient(135deg,#daa03d,#4d93aa)}
+  .workshop h3{font-size:15px;margin:9px 2px 0;font-weight:1000}.workshop p{font-size:12px;margin:1px 2px 0;line-height:1.3}
+  .note-row{display:grid;grid-template-columns:1.5fr .9fr;gap:14px;margin-top:20px}
+  .bluepaper{padding:14px;background:#c7e9ff;clip-path:polygon(0 0,100% 1%,99% 100%,1% 98%)}
+  .pinkpaper{padding:15px;background:#ffd3e7;transform:rotate(1deg)}
+  .paper-title{font-weight:1000;font-size:17px;text-transform:uppercase;margin:0 0 6px;letter-spacing:-.03em}
+  .note-row ul{padding-left:17px;margin:6px 0;font-size:12px}.note-row li{margin:3px 0}
+  .sticker{display:inline-block;background:var(--yellow);padding:9px;font-size:12px;font-weight:1000;text-align:center;transform:rotate(-9deg);line-height:1.15}
+  .side{display:flex;flex-direction:column;gap:16px}
+  .side-card{background:#142e3d;color:#fff;padding:18px;border:4px solid #203e49;box-shadow:6px 6px #0003}
+  .side-card h3{font-size:25px;line-height:.94;text-transform:uppercase;margin:0 0 16px;letter-spacing:-.045em}.side-card p{font-size:13px}
+  .side-card .scribble-btn,.side-card a{display:block;width:100%;font-weight:1000;text-align:center;padding:10px 4px;text-decoration:none;background:#ffeb4b;color:#111;transform:rotate(-3deg);margin-top:12px;border:0}
+  .side-card.magenta{background:#ea50ac;color:#181222;border-color:#fa9ad0;transform:rotate(1.5deg)}
+  .side-card.magenta .scribble-btn{background:#181b31;color:white}
+  .side-card.sky{background:#c9f1f9;color:#192c3e;border-color:#64d1e9;transform:rotate(-1deg)}
+  .sidebar-highlights{font-weight:1000;font-size:17px;color:#ffeb3e;line-height:1.23;text-align:center}
+  .side-pills{display:flex;gap:7px;flex-wrap:wrap}.pill{font-size:11px;background:#ffedf4;padding:3px 8px;color:#101e33;font-weight:900;transform:rotate(3deg)}
+  .ticker{background:var(--yellow);border-top:4px solid #141923;border-bottom:4px solid #141923;padding:13px 0;overflow:hidden;margin-top:22px;font-weight:1000;font-size:19px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+  .ticker span{display:inline-block;animation:move 25s linear infinite}@keyframes move{to{transform:translateX(-50%)}}
+  .lower{padding-top:36px}.section-head{font-size:38px;line-height:1;letter-spacing:-.06em;text-transform:uppercase;margin:0 0 8px;font-weight:1000}
+  .small-helper{margin:0 0 20px;font-size:14px}
+  .event-schedule{background:white;border:3px solid #0d2231;padding:25px;margin-bottom:25px;box-shadow:7px 7px var(--blue)}
+  .schedule-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .schedule-item{border-right:2px dotted #cbd0d3;padding-right:8px}.schedule-item:last-child{border:0}
+  .time{display:block;color:#7c19cc;font-weight:1000;font-size:14px}.schedule-item b{display:block;font-size:18px;margin-top:7px;line-height:1.14}.schedule-item p{font-size:12px;line-height:1.3}
+  .card-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;margin-bottom:35px}
+  .plain-card{background:#eaf2d7;padding:21px;border:2px dashed #aaa98c;min-height:220px}
+  .plain-card:nth-child(2){background:#eedaff}.plain-card:nth-child(3){background:#ffe7b6}
+  .plain-card h3{font-size:20px;margin:0 0 10px;text-transform:uppercase}.plain-card p{font-size:13px}
+  .plain-card a,.plain-card button{font-size:13px;font-weight:900;background:none;border:0;padding:0;text-decoration:underline;text-align:left}
+  /* The sign-up is intentionally styled like generic logistical information,
+     buried mid-page and given no prominent "Register" title. */
+  .logistics{display:grid;grid-template-columns:1fr .87fr;gap:21px;margin-top:22px;margin-bottom:37px;align-items:start}
+  .logistics-panel{background:#edf0ed;border:1px solid #c6cbc8;padding:20px 22px;color:#37413e;position:relative}
+  .logistics-panel h2{font-size:20px;letter-spacing:0;text-transform:none;margin:0 0 7px;font-weight:700;color:#5a6860}
+  .logistics-panel p{font-size:13px;margin:0 0 13px;color:#65716a}
+  .muted-box{padding:13px 14px;background:#e8ebe7;border:1px solid #d5d9d4;margin-top:13px}
+  .muted-box h3{font-size:14px;font-weight:700;margin:0 0 8px;color:#5d6c61}
+  .muted-box label{display:block;font-size:12px;font-weight:600;color:#718077;margin:7px 0 3px}
+  .muted-box input,.muted-box select{display:block;width:100%;border:1px solid #c6cec8;border-radius:2px;background:#f7f9f6;padding:8px 9px;color:#354138;font-size:13px;min-height:35px}
+  .muted-box .line-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .muted-box .quiet-button{border:1px solid #b5c0b6;background:#d9e2d8;color:#556359;font-size:12px;padding:8px 18px;font-weight:700;margin-top:12px}
+  .muted-box .quiet-button:hover{background:#cbd9ce}
+  .hint{color:#8e978f!important;font-size:11px!important;margin-top:7px!important}
+  .receipt{display:none;margin-top:10px;border:1px solid #829d88;background:#e2f1e4;color:#2d5738;padding:12px;font-size:13px}
+  .receipt.show{display:block}
+  .map-card{padding:20px;background:#e6edf2;border:3px solid #bacbd3}
+  .map-card h3{text-transform:uppercase;font-size:24px;margin:0 0 8px}.map-card p{font-size:13px}
+  .map-illustration{height:185px;position:relative;overflow:hidden;border:2px solid #aac3cc;background:repeating-linear-gradient(0deg,#b7d3cb 0,#b7d3cb 33px,#e0eee9 34px,#e0eee9 52px)}
+  .road{position:absolute;background:#f8fbf7;border:2px solid #ccd7d0;transform:rotate(-23deg);height:50px;width:150%;top:62px;left:-40px}.road.cross{transform:rotate(65deg);width:135%;top:65px;left:-41px}
+  .map-spot{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);border-radius:50% 50% 50% 0;rotate:-45deg;background:#ff42aa;color:white;font-weight:1000;font-size:28px;width:54px;height:54px;text-align:center;padding:6px;box-shadow:3px 3px #15303b66;z-index:2}
+  .map-spot span{display:block;transform:rotate(45deg)}
+  .faq{border-top:4px solid #102536;padding-top:27px;margin-top:10px}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .faq-item{background:white;border:2px solid #c8c6c0;padding:16px}.faq-item h3{font-size:16px;margin:0 0 5px}.faq-item p{font-size:13px;margin:0}
+  .gallery{padding-top:33px}.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.gallery-tile{height:170px;display:flex;align-items:center;justify-content:center;font-size:71px;background:linear-gradient(125deg,#2c357a,#b43d9b);border:5px solid white;box-shadow:2px 4px 8px #0003}
+  .gallery-tile:nth-child(2){background:linear-gradient(125deg,#49a4ad,#262b62)}.gallery-tile:nth-child(3){background:linear-gradient(125deg,#ef9b3b,#bd305a)}.gallery-tile:nth-child(4){background:linear-gradient(125deg,#4a4f78,#d52b86)}
+  .bottom-cta{background:#fa58b8;padding:30px;color:#161529;text-align:center;transform:rotate(-1deg);margin:42px 0 4px;box-shadow:8px 9px #202437}
+  .bottom-cta h2{font-size:37px;line-height:1;margin:0 0 10px;text-transform:uppercase}.bottom-cta p{font-size:15px}.bottom-cta a{display:inline-block;text-decoration:none;background:var(--yellow);padding:12px 26px;font-weight:900;transform:rotate(2deg)}
+  footer{background:#061624;color:#cddce7;padding:40px 20px 27px}
+  .footin{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px}
+  footer h2{color:var(--yellow);text-transform:uppercase;font-size:26px;margin:0 0 9px}.footer-links{display:flex;flex-direction:column;gap:9px;font-size:13px}
+  footer p{font-size:13px}footer a{color:#e7f2f8}
+  .demo-disclaimer{max-width:1200px;margin:18px auto 0;border-top:1px solid #ffffff32;padding-top:13px;color:#a6b3be;font-size:11px}
+  #notice{position:fixed;bottom:15px;left:50%;transform:translateX(-50%) translateY(120px);padding:12px 19px;background:#141e2f;color:white;z-index:15;box-shadow:0 5px 20px #0005;border:1px solid white;max-width:calc(100vw - 30px);transition:transform .3s}
+  #notice.active{transform:translateX(-50%) translateY(0)}
+  @media(max-width:1050px){.nav-wrap{flex-wrap:wrap}.social{display:none}.hero-in{grid-template-columns:1fr .8fr}.grid{grid-template-columns:1fr 225px}.workshop-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:79px}}
+  @media(max-width:720px){.nav-wrap{padding:13px;gap:7px}.logo{min-width:0}.logo-gear{font-size:34px}.logo-text{font-size:16px}.nav-items a{font-size:11px;padding:7px 8px}.hero-in{display:block;padding:36px 17px}.hero h1{font-size:clamp(58px,15vw,100px)}.hero-side{margin:0}.hero .promo{margin-top:18px;max-width:100%;transform:rotate(1deg)}.burst,.scribble{display:none}.container{padding:18px 15px 42px}.grid{display:block}.side{margin-top:19px;display:grid;grid-template-columns:1fr 1fr}.side-card{padding:13px}.side-card h3{font-size:20px}.workshop-grid{grid-template-columns:repeat(2,1fr)}.eventfacts{grid-template-columns:1fr 1fr}.fact{padding-bottom:10px}.fact:last-child{grid-column:span 2}.note-row,.logistics,.card-row,.faq-grid{grid-template-columns:1fr}.schedule-grid{grid-template-columns:repeat(2,1fr);row-gap:20px}.gallery-grid{grid-template-columns:repeat(2,1fr)}.footin{grid-template-columns:1fr 1fr}.footin>div:first-child{grid-column:span 2}}
+  @media(max-width:440px){.side{display:block}.hero h1{font-size:55px}.workshop .visual{height:88px}.workshop .visual span{font-size:44px}.muted-box .line-fields{display:block}.section-head{font-size:31px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker span{animation:none}#notice{transition:none}}
+</style>
+</head>
+<body>
+<div class="site">
+  <div class="topbar">Student creativity, big ideas, and a very long web page <span>Open to all makers</span></div>
+  <header class="header" id="home">
+    <div class="nav-wrap">
+      <a href="#home" class="logo" aria-label="Campus Maker Night home"><span class="logo-gear" aria-hidden="true">⚙</span><span class="logo-text">CAMPUS<br><span style="color:#53dfff">MAKER</span> <em>NIGHT</em><small>CREATE · SHARE · LEARN · BELONG</small></span></a>
+      <nav class="nav-items" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#about">Event Info</a><a href="#activities">Workshops</a><a href="#schedule">Sign Up</a><a href="#photos">Gallery</a><a href="#faq">More Stuff</a>
+      </nav>
+      <div class="social" aria-hidden="true">◎ ♪ ▶</div>
+    </div>
+  </header>
+  <section class="hero" aria-label="Campus Maker Night promotional banner">
+    <div class="orb one"></div><div class="orb two"></div>
+    <span class="hero-spark one" aria-hidden="true">✧</span><span class="hero-spark two" aria-hidden="true">★</span><span class="hero-spark three" aria-hidden="true">✦</span>
+    <div class="hero-in">
+      <div><div class="event-tag">✦ THE CAMPUS CREATIVE EVENT OF THE YEAR ✦</div><h1><span class="a">Campus</span><span class="b">Maker</span><span class="c">Night</span></h1><div class="tape">Tools ✕ People ✕ Projects ✕ A Brighter Tomorrow</div></div>
+      <div class="hero-side"><div class="burst">GOOD<br>IDEAS<br>HAPPEN HERE! ✦</div><div class="promo"><h2>DON'T MISS OUT!</h2><p>Fun things. Cool people. FREE maker kit?!</p><button class="action" type="button" data-scroll="activities">SIGN UP NOW! →</button></div></div>
+    </div>
+    <div class="scribble" aria-hidden="true">ALL MAKERS<br>WELCOME! ↗</div>
+  </section>
+  <main class="main-background">
+  <div class="container">
+    <div class="grid">
+      <div class="primary" id="about">
+        <section class="intro" aria-labelledby="introheading">
+          <div class="label-stripe">Wait, what's this all about?</div>
+          <h2 id="introheading">A night to <b>make</b>, learn, and <strong>belong.</strong></h2>
+          <p>Campus Maker Night is a hands-on event where students from all backgrounds come together to build, create, and explore. Whether you're into robotics, art, 3D printing, coding, or just curious, there's something for you! Tell your friends. Bring a project. Or don't. Just come hang out.</p>
+          <div class="eventfacts">
+            <div class="fact"><span class="glyph" aria-hidden="true">▦</span><div><b>Friday, April 23</b>2027 • one night only</div></div>
+            <div class="fact"><span class="glyph" aria-hidden="true">◷</span><div><b>5:00–11:00 PM</b>Come and go anytime!</div></div>
+            <div class="fact"><span class="glyph" aria-hidden="true">📍</span><div><b>Riverside Student Center</b>Main Hall & Makerspace, 123 University Ave.</div></div>
+          </div>
+        </section>
+        <section class="workshops" id="activities" aria-labelledby="workshop-heading">
+          <div class="label-stripe">Featured activities & workshops + other cool stuff</div>
+          <h2 class="paper-title" id="workshop-heading">Choose your own maker adventure!</h2>
+          <div class="workshop-grid">
+            <article class="workshop"><div class="visual"><span aria-hidden="true">🖨️</span></div><h3>3D Printing</h3><p>Make tiny objects, big ideas, and your own creations.</p></article>
+            <article class="workshop"><div class="visual"><span aria-hidden="true">🔌</span></div><h3>Electronics</h3><p>Try circuit boards, sensors, and a little soldering.</p></article>
+            <article class="workshop"><div class="visual"><span aria-hidden="true">🤖</span></div><h3>Robotics</h3><p>Hands-on mini robot demos and challenges.</p></article>
+            <article class="workshop"><div class="visual"><span aria-hidden="true">🎨</span></div><h3>Creative Tech</h3><p>Combine art, everyday objects, and technology.</p></article>
+            <article class="workshop"><div class="visual"><span aria-hidden="true">💻</span></div><h3>Coding</h3><p>Create weird, fun projects and compare notes.</p></article>
+            <article class="workshop"><div class="visual"><span aria-hidden="true">🛠️</span></div><h3>Upcycling</h3><p>Turn old things into something surprising and new.</p></article>
+          </div>
+        </section>
+        <section class="note-row" aria-label="Additional important information">
+          <div class="bluepaper"><h3 class="paper-title">› Important info (please read!)</h3><ul><li>This is for currently enrolled students and guests.</li><li>Workshop seating is first-come, first-served.</li><li>Photos and video may be taken for promotional use.</li><li>Food, snacks, and surprises may be provided.</li><li>Questions? Ask a volunteer at the front desk.</li></ul></div>
+          <div class="pinkpaper"><h3 class="paper-title">Bring the following</h3><ul><li>Your creativity</li><li>A laptop (if you have one)</li><li>Ideas to share</li><li>A friend!</li></ul><div class="sticker">ALL SKILL<br>LEVELS<br>WELCOME</div></div>
+        </section>
+      </div>
+      <aside class="side" aria-label="Extra event promotions">
+        <div class="side-card magenta"><h3>⚡ WHY SHOULD YOU COME?</h3><p>Meet makers! Try something new! Enjoy campus after dark! Collect stickers! Take a selfie with a robot!</p><button type="button" class="scribble-btn" data-scroll="schedule">TELL ME MORE →</button></div>
+        <div class="side-card"><h3>FREE STUFF* ✦</h3><div class="sidebar-highlights">PIZZA!<br>STICKERS!<br>PRIZES?<br>FRIENDS!</div><p style="font-size:10px">*While supplies last. Some details may vary. Not all giveaways are guaranteed.</p><a href="#faq">Get the details →</a></div>
+        <div class="side-card sky"><h3>WHAT KIND OF MAKER ARE YOU?</h3><p>Inventor? Artist? Experimenter? Not sure? That's okay!</p><div class="side-pills"><span class="pill">Art</span><span class="pill">Tech</span><span class="pill">Design</span><span class="pill">Curious</span></div><button type="button" class="scribble-btn" data-toast="Workshop quiz coming soon!">TAKE THE QUIZ!</button></div>
+      </aside>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true"><span>★ MAKE SOMETHING COOL ★ BRING YOUR FRIENDS ★ CREATE SHARE LEARN BELONG ★ GOOD IDEAS HAPPEN HERE ★ TRY A WORKSHOP ★ MAKE SOMETHING COOL ★ BRING YOUR FRIENDS ★ CREATE SHARE LEARN BELONG ★ GOOD IDEAS HAPPEN HERE ★ TRY A WORKSHOP ★ </span></div>
+  <div class="container lower">
+    <section aria-labelledby="schedule-heading" id="schedule">
+      <div class="label-stripe" style="background:var(--blue)">Plan the night (or don't)</div>
+      <h2 class="section-head" id="schedule-heading">What's happening & when?</h2>
+      <p class="small-helper">Times and room locations may change. Follow the signs when you arrive. Browse around to learn more.</p>
+      <div class="event-schedule"><div class="schedule-grid">
+        <div class="schedule-item"><span class="time">5:00 PM</span><b>Doors open!</b><p>Music, mingling, supplies, welcome table, and check-in.</p></div>
+        <div class="schedule-item"><span class="time">6:00 PM</span><b>Mini workshops</b><p>3D printing, coding, circuits, and more in different rooms.</p></div>
+        <div class="schedule-item"><span class="time">7:30 PM</span><b>Show & tell</b><p>Students share what they've been making or learning.</p></div>
+        <div class="schedule-item"><span class="time">9:30 PM</span><b>Late-night making</b><p>Open-ended projects, snacks, community, and demos.</p></div>
+      </div></div>
+    </section>
+    <section class="card-row" aria-label="Other ways to get involved">
+      <div class="plain-card"><h3>🤝 Help Out</h3><p>Love events? Help move tables, welcome people, and keep the creative energy going. Ask about volunteering at the information table.</p><button type="button" data-toast="Volunteer information is available at the welcome desk.">Volunteer details ↗</button></div>
+      <div class="plain-card"><h3>💡 Bring Your Idea</h3><p>Don't have a project? No problem. But if you've got something you'd like to show, we'd love to see it!</p><button type="button" data-scroll="photos">See maker examples ↗</button></div>
+      <div class="plain-card"><h3>🍕 Snacks & Perks</h3><p>We'll have snacks, drinks, and some fun surprises. Food is limited, so be sure to explore the rest of the event too.</p><button type="button" data-scroll="faq">More information ↗</button></div>
+    </section>
+    <section class="logistics" id="visit-details" aria-label="Attendance and directions">
+      <div class="logistics-panel">
+        <h2>Before you get here...</h2>
+        <p>Some workshops are located in the main hall while others are in separate campus rooms. Keep an eye out for colorful signs, ask a volunteer, and bring your campus ID if you have one.</p>
+        <p>You'll also want to think about which activity sounds fun, whether you need borrowed equipment, and if you plan on bringing anything along.</p>
+        <div class="muted-box">
+          <h3>A few details</h3>
+          <form id="attendanceForm" autocomplete="off">
+            <div class="line-fields"><div><label for="first">First name *</label><input id="first" name="first" required placeholder="Your name"></div><div><label for="last">Last name *</label><input id="last" name="last" required placeholder="Your last name"></div></div>
+            <label for="email">Campus email *</label><input id="email" name="email" type="email" required placeholder="you@university.edu">
+            <label for="interest">What sounds interesting? *</label><select id="interest" name="interest" required><option value="">Choose something</option><option>3D Printing</option><option>Electronics</option><option>Robotics</option><option>Creative Tech</option><option>Coding</option><option>Upcycling</option><option>Not sure yet</option></select>
+            <button class="quiet-button" type="submit">Continue →</button>
+          </form>
+          <div id="receipt" class="receipt" role="status" aria-live="polite"><b>You're on the list!</b> This is a fictional classroom demonstration. Your information wasn't sent anywhere.</div>
+          <p class="hint">* Required. Event details may be sent later. Do not enter real personal information in this classroom demo.</p>
+        </div>
+      </div>
+      <div class="map-card"><h3>📍 Finding us</h3><p>Riverside Student Center, Main Hall & Makerspace. Enter by the east doors and look for balloons. There are several campus buildings with similar names, so check the signs.</p><div class="map-illustration" role="img" aria-label="Stylized, fictional campus map with location pin"><div class="road"></div><div class="road cross"></div><div class="map-spot"><span>★</span></div></div><p><strong>123 University Ave. • West Campus</strong><br><span style="font-size:11px">The map is an illustration and is not for navigation.</span></p><button class="action" type="button" data-toast="The map is fictional and directions are not available.">GET DIRECTIONS ↗</button></div>
+    </section>
+    <section class="faq" id="faq" aria-labelledby="faq-heading">
+      <div class="label-stripe">You asked, we answered (maybe)</div>
+      <h2 class="section-head" id="faq-heading">Frequently asked questions</h2>
+      <div class="faq-grid">
+        <article class="faq-item"><h3>Is there an entry fee?</h3><p>It's free! Some workshops have limited capacity, so arriving early is smart.</p></article>
+        <article class="faq-item"><h3>Can I bring a friend?</h3><p>Sure, subject to campus guest policies. Everyone should check in at the welcome table.</p></article>
+        <article class="faq-item"><h3>Do I need experience?</h3><p>No experience needed. Start with what you're curious about.</p></article>
+        <article class="faq-item"><h3>Can I switch workshops?</h3><p>Usually, depending on space. Check with workshop hosts when you arrive.</p></article>
+      </div>
+    </section>
+    <section class="gallery" id="photos" aria-labelledby="gallery-heading"><div class="label-stripe" style="background:var(--yellow)">Memories / inspiration / pictures</div><h2 class="section-head" id="gallery-heading">Maker moments!</h2><p class="small-helper">What kind of night will YOU make? Here are a few illustrations of what to expect.</p><div class="gallery-grid"><div class="gallery-tile" aria-label="Robotics illustration">🤖</div><div class="gallery-tile" aria-label="Creative arts illustration">🎨</div><div class="gallery-tile" aria-label="Workshop tools illustration">🛠️</div><div class="gallery-tile" aria-label="Ideas illustration">💡</div></div></section>
+    <section class="bottom-cta"><h2>Big ideas start somewhere!</h2><p>Ready to make something amazing? Find your people, explore the workshops, and invite your friends.</p><a href="#activities">EXPLORE WHAT'S ON! →</a></section>
+  </div>
+  </main>
+  <footer><div class="footin"><div><h2>⚙ Campus Maker Night</h2><p>Create. Share. Learn. Belong.<br>Big ideas, little projects, and everything in between.</p></div><div><strong>Explore</strong><div class="footer-links"><a href="#about">About</a><a href="#activities">Workshops</a><a href="#photos">Gallery</a><a href="#schedule">What's happening</a></div></div><div><strong>Follow along</strong><div class="footer-links"><a href="#home">Social</a><a href="#faq">Event information</a><a href="mailto:hello@example.invalid">Contact us</a></div></div></div><div class="demo-disclaimer">Fictional UX classroom example • Made to demonstrate poor registration discoverability and misleading calls to action • No real event, registration service, or data collection.</div></footer>
+</div>
+<div id="notice" role="status" aria-live="polite"></div>
+<script>
+  // All interaction is local. In particular, no data is transmitted or stored.
+  const notice = document.getElementById('notice');
+  let noticeTimeout;
+  function toast(message){
+    notice.textContent = message;
+    notice.classList.add('active');
+    clearTimeout(noticeTimeout);
+    noticeTimeout = setTimeout(() => notice.classList.remove('active'), 3900);
+  }
+  document.querySelectorAll('[data-scroll]').forEach(button=>{
+    button.addEventListener('click',()=>{
+      const section=document.getElementById(button.dataset.scroll);
+      if(section) section.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+  document.querySelectorAll('[data-toast]').forEach(button=>{
+    button.addEventListener('click',()=>toast(button.dataset.toast));
+  });
+  document.getElementById('attendanceForm').addEventListener('submit', event=>{
+    event.preventDefault();
+    const receipt=document.getElementById('receipt');
+    receipt.classList.add('show');
+    event.currentTarget.reset();
+    receipt.focus?.();
+  });
+</script>
+</body>
+</html>
