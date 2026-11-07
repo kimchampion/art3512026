@@ -1,0 +1,312 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#13283d"><meta name="description" content="Turn your trip-card components into a short clickable experience with navigation, an alert overlay, Smart Animate, and a shareable flow."><title>Linking a Flow in Figma | Starship Crew Figma Workshops</title><style>
+500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{color-scheme:light;--ink:#172337;--text:#2c3850;--muted:#627086;--border:#dce4ed;--bg:#f5f7fa;--white:#fff;--accent:#1d6078;--accent-dark:#15485d;--navy:#13283d;--soft:#eaf4f5;--gold:#fff4dd;--shadow:0 15px 36px rgba(23,35,55,.07);--success-bg:#DDF4E5;--success-text:#216A43;--warning-bg:#F4ECDD;--warning-text:#6A3C21;--danger-bg:#F4DDDD;--danger-text:#6A2121}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px;line-height:1.65}a{color:var(--accent-dark);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #2e839e;outline-offset:3px}h1,h2,h3,h4,.brand,.stat-val{font-family:Manrope,'DM Sans',sans-serif;letter-spacing:-.025em;color:var(--ink)}h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.16;margin:14px 0 15px;font-weight:800}h2{font-size:1.65rem;line-height:1.24;margin:0 0 14px;font-weight:800;scroll-margin-top:88px}h3{font-size:1.17rem;line-height:1.35;margin:23px 0 9px;font-weight:750;scroll-margin-top:88px}h4{font-size:1rem;margin:18px 0 5px}p{margin:0 0 15px}ul,ol{padding-left:1.45rem;margin:8px 0 18px}li{padding-left:.2rem;margin:8px 0}li::marker{color:var(--accent)}strong{color:var(--ink);font-weight:700}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#edf2f6;border:1px solid #dce5ec;border-radius:5px;padding:1px 5px;font-size:.91em;color:#24455e;overflow-wrap:anywhere}table{width:100%;border-collapse:separate;border-spacing:0;margin:16px 0 22px;font-size:.92rem;border:1px solid var(--border);border-radius:11px;overflow:hidden}th,td{padding:10px 13px;vertical-align:top;text-align:left;border-bottom:1px solid var(--border)}th{background:#eaf1f6;color:#1d374e;font-weight:750}tr:last-child td{border-bottom:none}tr:nth-child(even) td{background:#fafcfe}blockquote{background:#eaf4f5;border-left:4px solid #298096;border-radius:0 10px 10px 0;padding:15px 17px;margin:20px 0 23px}blockquote p:last-child{margin-bottom:0}hr{border:0;border-top:1px solid var(--border);margin:27px 0}
+.skip-link{position:absolute;z-index:999;top:-100px;left:10px;background:#fff;color:#102b41;padding:12px 16px}.skip-link:focus{top:10px}.topnav{position:sticky;top:0;z-index:30;height:64px;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}.topnav-inner{max-width:1380px;margin:auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px}.brand{text-decoration:none;color:#16334b;font-weight:800;font-size:.94rem;display:flex;align-items:center;gap:10px;white-space:nowrap}.brand-mark{width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:#1a5b72;color:#fff;font-size:.8rem;letter-spacing:0}.toplinks{display:flex;gap:7px;align-items:center}.toplinks a{color:#40536b;text-decoration:none;font-size:.85rem;font-weight:700;border-radius:7px;padding:8px 10px}.toplinks a:hover,.toplinks a[aria-current=page]{background:#e8f2f6;color:#144c63}
+.hero{background:var(--navy);color:#fff}.hero-inner{max-width:1380px;margin:0 auto;padding:53px 28px 45px}.eyebrow{font-family:Manrope,sans-serif;font-size:.77rem;letter-spacing:.13em;text-transform:uppercase;color:#9bd1d4;font-weight:800}.hero h1{color:#fff;max-width:860px}.hero p{color:#c7d8e2;font-size:1.06rem;max-width:770px;margin-bottom:0}.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0}.chip{border:1px solid #4e6376;color:#d9e5ed;font-size:.78rem;font-weight:700;letter-spacing:.01em;padding:6px 11px;border-radius:999px}.chip.light{border-color:#c9d8e0;color:#426077;background:#f4f8f9}
+.page-grid{max-width:1380px;margin:0 auto;display:grid;grid-template-columns:245px minmax(0,890px);gap:34px;padding:32px 28px 70px;align-items:start}.sidebar{position:sticky;top:85px;max-height:calc(100vh - 99px);overflow-y:auto;padding:15px 8px 18px 0}.sidebar-title{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#78869b;font-weight:800;margin:10px 8px 12px}.toc-list{list-style:none;margin:0;padding:0}.toc-list li{margin:1px 0;padding:0}.toc-list a{display:block;text-decoration:none;border-radius:8px;padding:9px 10px;font-size:.84rem;line-height:1.33;color:#506078}.toc-list a:hover{background:#e9eff4;color:#17334b}.backtoc{margin:18px 8px;font-size:.84rem}.content{min-width:0}.intro-card{background:var(--white);padding:26px 30px;border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--border);margin:0 0 18px}.intro-card p:last-child{margin:0}.chapter{background:var(--white);border:1px solid var(--border);border-radius:15px;padding:26px 30px;margin:18px 0;box-shadow:var(--shadow)}.chapter>h2{padding-top:1px}.chapter p:first-of-type:has(strong){margin-top:5px}.chapter>h2+p>strong:first-child{color:#1c667b}.chapter ol>li{padding-left:.3rem}.chapter li::marker{font-weight:750}.footer-next{display:flex;gap:15px;flex-wrap:wrap;justify-content:space-between;padding:24px 0;border-top:1px solid var(--border)}.footer-next a{font-weight:750;text-decoration:none}.minor{font-size:.82rem;color:#65748a}.figure{border:1px solid #d9e3ea;background:#f7fafb;border-radius:13px;padding:20px;margin:17px 0 22px}.figure-caption{font-size:.79rem;color:#687990;margin-top:12px}.device{width:min(100%,300px);border-radius:25px;background:#fff;border:3px solid #536376;box-shadow:0 8px 19px rgba(15,35,50,.1);padding:9px 9px 18px;margin:auto}.device-notch{height:9px;width:77px;border-radius:10px;background:#536376;margin:3px auto 13px}.device-screen{background:#f1f4f6;border-radius:9px;min-height:230px;padding:14px}.demo-card{background:#fff;border:1px solid #d7dee7;border-radius:12px;padding:14px;box-shadow:0 3px 7px rgba(25,45,68,.03)}.demo-card h4{font-size:.84rem;margin:0;color:#273449}.demo-card .small{font-size:.73rem;color:#657186;margin:6px 0}.demo-card .row{display:flex;justify-content:space-between;gap:10px;font-size:.78rem;padding:7px 0;border-top:1px solid #e9edf2}.demo-card .row:first-of-type{border-top:0}.status{font-size:.67rem;font-weight:750;display:inline-block;padding:3px 8px;border-radius:6px;white-space:nowrap}.status.success{background:var(--success-bg);color:var(--success-text)}.status.warning{background:var(--warning-bg);color:var(--warning-text)}.status.danger{background:var(--danger-bg);color:var(--danger-text)}.status-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.status-sample{background:#fff;border:1px solid var(--border);border-radius:10px;padding:13px 10px;text-align:center}.status-sample p{font-size:.75rem;margin:7px 0 0}.flow-strip{display:flex;align-items:stretch;gap:8px;justify-content:space-between;flex-wrap:wrap}.flow-step{flex:1;min-width:135px;border:1px solid #d0dfe7;background:#fff;border-radius:10px;padding:13px}.flow-step strong{font-size:.85rem}.flow-step small{display:block;color:#6b7990;font-size:.72rem}.flow-arrow{align-self:center;color:#457c8c;font-size:1.4rem}.demo-cta{display:inline-block;background:#2563EB;border-radius:8px;padding:9px 17px;color:#fff;font-weight:750;font-size:.8rem}.demo-cta.alert{background:#B42318}.demo-navbar{width:min(100%,350px);background:#fff;border:1px solid #d7e2eb;border-radius:12px;margin:auto;overflow:hidden}.demo-statusbar{height:23px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;font-size:10px;color:#40536b;background:#f6f8fa}.demo-navcontent{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px}.demo-navcontent>span{font-size:13px;color:#30445c}.demo-navcontent strong{font-size:14px}.pill-link{text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:11px 15px;border-radius:9px;background:#1b6579;color:#fff;font-weight:700}.pill-link:hover{background:#144e60;color:#fff}.note-small{font-size:.86rem;color:#5e7085}.checkgrid{list-style:none;padding:0;margin:15px 0}.checkgrid li{margin:8px 0;padding:0}.checkgrid label{cursor:pointer;display:flex;align-items:baseline;gap:10px}.checkgrid input{accent-color:#1b667c;width:17px;height:17px;flex:0 0 17px;transform:translateY(3px)}.checkgrid label:has(input:checked){color:#627789;text-decoration:line-through}.foot{padding:20px 28px 45px;max-width:1380px;margin:auto;color:#68778d;font-size:.83rem}
+.home-hero{min-height:330px}.home-container{max-width:1110px;margin:0 auto;padding:38px 26px 70px}.home-kicker{font-weight:800;letter-spacing:.09em;color:#597388;text-transform:uppercase;font-size:.75rem}.home-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.home-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:29px;box-shadow:var(--shadow)}.home-card h2{font-size:1.5rem;margin:10px 0 9px}.home-card p{color:#56677e}.home-num{display:inline-flex;width:40px;height:40px;border-radius:11px;background:#e5f2f3;color:#14576e;align-items:center;justify-content:center;font-weight:800;font-size:1.05rem}.home-details{margin:22px 0;padding:21px 25px;background:#fff;border:1px solid var(--border);border-radius:14px}
+@media(max-width:1000px){.page-grid{grid-template-columns:210px minmax(0,1fr);gap:23px}.intro-card,.chapter{padding:23px 23px}}
+@media(max-width:740px){.topnav-inner{padding:0 14px}.brand{font-size:.82rem}.toplinks a{font-size:.76rem;padding:7px 6px}.hero-inner{padding:36px 18px}.page-grid{display:block;padding:18px 14px 45px}.sidebar{position:static;max-height:none;overflow:visible;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px;margin:0 0 17px}.toc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px}.toc-list a{font-size:.79rem;padding:8px}.intro-card,.chapter{padding:21px 18px}.status-list{grid-template-columns:1fr}.home-grid{grid-template-columns:1fr}.home-container{padding:25px 15px 45px}.flow-strip{display:block}.flow-step{margin:9px 0}.flow-arrow{text-align:center;display:block;transform:rotate(90deg)}table{display:block;overflow-x:auto;white-space:normal}th,td{min-width:110px}h2{font-size:1.42rem}h1{font-size:2.05rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.topnav,.sidebar,.pill-link,.footer-next,.skip-link{display:none!important}body{font-size:11pt;background:#fff;color:#000}.hero{background:#fff!important;color:#000!important}.hero-inner{padding:0 0 12px}.hero h1,.hero p,.eyebrow{color:#000!important}.hero-meta .chip{color:#222;border-color:#666}.page-grid{display:block;padding:0;max-width:none}.intro-card,.chapter{box-shadow:none;border:0;border-bottom:1px solid #aaa;border-radius:0;padding:10px 0;margin:0}.chapter{break-inside:avoid-page}.chapter li{break-inside:avoid}.chapter h2,.chapter h3{break-after:avoid}a{text-decoration:underline}.foot{padding:0}.figure{break-inside:avoid}table{font-size:9pt}}
+
+/* Accessible, uncluttered student checklists and narrow-screen nav */
+.task-list-item{list-style:none;margin-left:-18px}.task-list-item input{margin-right:8px;accent-color:#1b667c;width:16px;height:16px;vertical-align:middle}@media(max-width:740px){.topnav-inner{gap:8px}.brand{max-width:147px;overflow:hidden;text-overflow:ellipsis}.toplinks{min-width:0;overflow-x:auto;white-space:nowrap;scrollbar-width:none}.toplinks::-webkit-scrollbar{display:none}}
+
+</style></head><body><a class="skip-link" href="#main">Skip to tutorial</a><header class="topnav"><div class="topnav-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">✦</span> Starship Crew · Figma</a><nav class="toplinks" aria-label="Main navigation"><a href="index.html">All workshops</a><a href="tutorial-01-building-components.html" >01 · Components</a><a href="tutorial-02-linking-a-flow.html" aria-current="page">02 · Prototype</a></nav></div></header>
+<div class="hero"><div class="hero-inner"><div class="eyebrow">Workshop 02 · Prototype</div><h1>Linking a Flow in Figma</h1><p>Turn your trip-card components into a short clickable experience with navigation, an alert overlay, Smart Animate, and a shareable flow.</p><div class="hero-meta"><span class="chip">About 36 minutes</span><span class="chip">Individual Figma exploration file</span><span class="chip">Starship Crew App</span></div></div></div>
+<div class="page-grid"><aside class="sidebar" aria-label="On this page"><p class="sidebar-title">On this page</p><ul class="toc-list"><li><a href="#before-you-begin">Before you begin</a></li><li><a href="#1-prepare-your-screens-and-flow-starting-point">1. Prepare your screens and flow starting point</a></li><li><a href="#2-create-a-reusable-cta-button">2. Create a reusable CTA button</a></li><li><a href="#3-build-a-reusable-navigation-bar">3. Build a reusable Navigation Bar</a></li><li><a href="#4-link-screens-and-choose-the-cancelled-variant">4. Link screens and choose the Cancelled variant</a></li><li><a href="#5-open-a-red-alert-overlay">5. Open a Red Alert overlay</a></li><li><a href="#6-add-smart-animate">6. Add Smart Animate</a></li><li><a href="#7-preview-test-and-share-your-prototype">7. Preview, test, and share your prototype</a></li><li><a href="#completion-checklist">Completion checklist</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li><a href="#optional-independent-challenge">Optional independent challenge</a></li><li><a href="#how-this-supports-the-starship-crew-app">How this supports the Starship Crew App</a></li></ul><p class="backtoc"><a href="index.html">← Workshop home</a></p></aside><main id="main" class="content"><div class="intro-card"><p><strong>How to use this page:</strong> Follow each numbered step in Figma. You can jump between sections using the topic list, or print this page from your browser. The exercises use your own practice file; your team determines its separate project organization.</p></div><section aria-labelledby="before-you-begin" class="chapter"><h2 id="before-you-begin">Before you begin</h2>
+<p>Open your <strong>existing</strong> exploration file at <strong>2026 UX Design (Fall) → Team [number] → Explorations &amp; Demo → Shuttlecraft Trips</strong>. You should already have <code>02 – Components</code> and <code>03 – Screens</code>, the <strong>Trip / Card</strong> component, its <strong>On time / Changed / Cancelled</strong> variants, and your styles from Workshop 1.</p>
+<p><strong>What you'll make:</strong> A reusable CTA button and Navigation Bar, plus a clickable prototype that goes from an upcoming shuttle trip to details, interrupts with a <strong>Red Alert</strong>, and lands on a <strong>Cancelled</strong> trip state.</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Section</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–4 min</td>
+<td>Prepare screens and flow start</td>
+<td>Three screens, one named flow</td>
+</tr>
+<tr>
+<td>4–7 min</td>
+<td>CTA button</td>
+<td>Reusable call-to-action</td>
+</tr>
+<tr>
+<td>7–15 min</td>
+<td>Navigation Bar</td>
+<td>Reusable component and screen instances</td>
+</tr>
+<tr>
+<td>15–21 min</td>
+<td>Link screens and select a variant</td>
+<td>Navigate to; Cancelled state</td>
+</tr>
+<tr>
+<td>21–27 min</td>
+<td>Red Alert overlay</td>
+<td>Interruption above the details screen</td>
+</tr>
+<tr>
+<td>27–32 min</td>
+<td>Smart Animate</td>
+<td>A smoother screen transition</td>
+</tr>
+<tr>
+<td>32–36 min</td>
+<td>Preview and share</td>
+<td>Testable prototype link</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section aria-labelledby="1-prepare-your-screens-and-flow-starting-point" class="chapter"><h2 id="1-prepare-your-screens-and-flow-starting-point">1. Prepare your screens and flow starting point</h2><figure class="figure"><div class="flow-strip"><div class="flow-step"><strong>01 / Upcoming Trips</strong><small>View trip</small></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>02 / Trip Details</strong><small>Simulate red alert</small></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>Red Alert overlay</strong><small>View updated trip</small></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>03 / Trip Cancelled</strong><small>Status: Cancelled</small></div></div><figcaption class="figure-caption">The alert is an overlay; the final state is a separate screen with its card instance set to Cancelled.</figcaption></figure>
+<p><strong>0–4 min · Prototype setup</strong></p>
+<ol>
+<li>Open <strong><code>03 – Screens</code></strong> and rename your existing phone frame <strong><code>01 / Upcoming Trips</code></strong>. Keep the <strong>On time</strong> trip-card instance visible.</li>
+<li>Leave room below that card for a <strong>View trip</strong> action. You will add a reusable CTA button next.</li>
+<li><strong>Duplicate</strong> the phone frame and name the copy <strong><code>02 / Trip Details</code></strong>. This will show trip information and a <strong>Simulate red alert</strong> action.</li>
+<li>Duplicate the details frame again and name it <strong><code>03 / Trip Cancelled</code></strong>. Keep the card instance where it is; in Section 4 you will change its <strong>Status</strong> to <strong>Cancelled</strong>. Add the message: <strong>“Shuttle S-04 has been cancelled. Boarding is suspended.”</strong></li>
+<li>Select the top-level <strong><code>01 / Upcoming Trips</code></strong> frame. Switch to the <strong>Prototype</strong> tab in the right sidebar.</li>
+<li>Under <strong>Flow starting point</strong>, click <strong>+</strong> and name the flow <strong><code>Shuttle status interruption</code></strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Remember:</strong> A flow starting point belongs to a <strong>top-level screen frame</strong>, not to a layer inside the card.</p>
+</blockquote>
+</section>
+<section aria-labelledby="2-create-a-reusable-cta-button" class="chapter"><h2 id="2-create-a-reusable-cta-button">2. Create a reusable CTA button</h2>
+<p><strong>4–7 min · An Auto Layout component</strong></p>
+<ol>
+<li>Open the <strong><code>02 – Components</code></strong> page.</li>
+<li>Press <strong>T</strong> and type <strong>Button</strong>. Apply your <strong><code>Body / Regular</code></strong> text style.</li>
+<li>Select the text and press <strong>Shift + A</strong> to add Auto Layout. Rename the frame <strong><code>cta-button</code></strong>.</li>
+<li>Set alignment to <strong>Center</strong>; horizontal padding to <strong>16 px</strong> and vertical padding to <strong>10 px</strong>. Keep width and height <strong>Hug contents</strong>.</li>
+<li>Select <code>cta-button</code> and apply the <strong><code>Action / Primary</code></strong> style to its <strong>Fill</strong>.</li>
+<li>Select the Button text layer and apply <strong><code>Surface / Default</code></strong> to the <strong>text fill</strong> (white).</li>
+<li>Set the <code>cta-button</code> corner radius to <strong>8 px</strong>.</li>
+<li>Select <code>cta-button</code> and <strong>Create component</strong> (Mac: <strong>Option + Command + K</strong>). Leave the main component on <code>02 – Components</code>.</li>
+<li>On <code>03 – Screens</code>, place a <strong>cta-button instance</strong> on <strong>Upcoming Trips</strong>; change its label to <strong>View trip</strong>. Place another instance on <strong>Trip Details</strong>; change its label to <strong>Simulate red alert</strong>.</li>
+<li><strong>Select the Simulate red alert button instance</strong> on Trip Details. In the right sidebar, override that instance's fill from <code>Action / Primary</code> to <strong>red</strong> (for example, <strong><code>#B42318</code></strong>). Leave its text white using <code>Surface / Default</code>.</li>
+<li>If you want the CTA to span the screen content width, set the <strong>instance</strong> to <strong>Fill container</strong> inside your <code>screen-content</code> Auto Layout frame. Keep its height <strong>Hug contents</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Do not edit the main CTA component to red.</strong> The red fill is an <strong>instance override</strong> on the Simulate red alert button. Other buttons stay blue.</p>
+</blockquote>
+</section>
+<section aria-labelledby="3-build-a-reusable-navigation-bar" class="chapter"><h2 id="3-build-a-reusable-navigation-bar">3. Build a reusable Navigation Bar</h2><figure class="figure"><div class="demo-navbar"><div class="demo-statusbar"><span>9:41</span><span>●●●  ▪</span></div><div class="demo-navcontent"><span>‹ Back</span><strong>Trip Details</strong><span>Profile</span></div></div><figcaption class="figure-caption">Structure: iPhone status bar → nav-content (Back / Title / Profile) → Navigation Bar component.</figcaption></figure>
+<p><strong>7–15 min · Status bar, Back, Title, and Profile</strong></p>
+<h3>A. Make the Back button</h3>
+<ol>
+<li>Open <code>02 – Components</code>. In <strong>Figma Resources / Assets</strong>, search for <strong>“iPhone status bar”</strong> and insert a status bar instance for a <strong>402 px-wide phone</strong>.</li>
+<li>Press <strong>T</strong>, type <strong>Back</strong>, and apply <strong><code>Body / Regular</code></strong>.</li>
+<li>Select Back and press <strong>Shift + A</strong>. Set the direction to <strong>Horizontal</strong>, align items to <strong>Center</strong>, and temporarily name the frame <code>back-container</code>.</li>
+<li>Search <strong>Figma Resources / Assets</strong> for a <strong>Material Design back icon</strong>, such as <code>arrow_back</code> or <code>chevron_left</code>.</li>
+<li>Drag the icon <strong>before</strong> the word Back within that Auto Layout container. Set an appropriate icon size (about <strong>20–24 px</strong>) and a small gap (<strong>4–8 px</strong>).</li>
+<li>Rename the Auto Layout frame <strong><code>back-button</code></strong>.</li>
+</ol>
+<h3>B. Add the navigation content</h3>
+<ol>
+<li>Create text reading <strong>Title</strong>; apply your existing <strong><code>Heading / Medium</code></strong> style.</li>
+<li>Create text reading <strong>Profile</strong> and apply <strong><code>Body / Regular</code></strong>.</li>
+<li>Select Profile and press <strong>Shift + A</strong>. Name the resulting frame <strong><code>profile-container</code></strong>.</li>
+<li>Select the <strong>three sibling layers</strong>: <code>back-button</code>, Title, and <code>profile-container</code>.</li>
+<li>Press <strong>Shift + A</strong> to wrap them in <strong>horizontal Auto Layout</strong>.</li>
+<li>Set <strong>Gap = Auto</strong> (<em>Space between</em>), vertical alignment = <strong>Center</strong>, and horizontal padding = <strong>16 px</strong>.</li>
+<li>Name the frame <strong><code>nav-content</code></strong>.</li>
+</ol>
+<h3>C. Assemble, publish as a component, and place instances</h3>
+<ol>
+<li>Select the <strong>iPhone status bar instance</strong> and <code>nav-content</code>, then press <strong>Shift + A</strong> to make a <strong>vertical Auto Layout</strong> parent.</li>
+<li>Rename the parent frame <strong><code>Navigation Bar</code></strong> and set <strong>Gap = 0</strong>.</li>
+<li>For the sample phone, use <strong>402 px</strong> as the Navigation Bar width and <strong>Hug contents</strong> for height. Set <code>nav-content</code> to <strong>Fill container</strong> width; make the imported status bar fit the same width if needed.</li>
+<li>Select the Navigation Bar and choose <strong>Create component</strong>. Keep the main component on <code>02 – Components</code>.</li>
+<li>On <code>03 – Screens</code>, add a <strong>Navigation Bar instance to each of the three phone screens</strong>, above <code>screen-content</code>:<ul>
+<li><code>01 / Upcoming Trips</code></li>
+<li><code>02 / Trip Details</code></li>
+<li><code>03 / Trip Cancelled</code></li>
+</ul>
+</li>
+<li>Override <strong>Title</strong> in each instance to match its screen. Keep the whole Navigation Bar at the top of each phone frame.</li>
+<li>On <strong><code>01 / Upcoming Trips</code></strong>, expand its Navigation Bar instance in the Layers panel, select the nested <strong><code>back-button</code></strong>, and <strong>hide that layer</strong> using the visibility (eye) control. Nothing comes before the first screen.</li>
+<li>Leave <strong>Back visible</strong> on <code>02 / Trip Details</code> and <code>03 / Trip Cancelled</code>. <strong>Hide the Back button only in the first screen's instance</strong>, not in the main component.</li>
+</ol>
+<blockquote>
+<p><strong>Layout note:</strong> Because your phone frame has <strong>0 padding</strong>, the Navigation Bar can span the full 402 px. The separate <code>screen-content</code> frame keeps the trip content aligned to <strong>16 px side margins</strong>. With <strong>Space between</strong>, the title may not be mathematically centered when the left and right controls have different widths; that's acceptable for this demo.</p>
+</blockquote>
+</section>
+<section aria-labelledby="4-link-screens-and-choose-the-cancelled-variant" class="chapter"><h2 id="4-link-screens-and-choose-the-cancelled-variant">4. Link screens and choose the Cancelled variant</h2>
+<p><strong>15–21 min · Navigate to vs. Change to</strong></p>
+<h3>A. Connect View trip to Trip Details</h3>
+<ol>
+<li>Open <code>03 – Screens</code> and select the <strong>View trip</strong> button instance on <strong><code>01 / Upcoming Trips</code></strong>.</li>
+<li>In the <strong>Prototype</strong> tab, drag the blue connector handle from the button to <strong><code>02 / Trip Details</code></strong>.</li>
+<li>Set the trigger to <strong>On click / On tap</strong> and the action to <strong>Navigate to</strong>. Confirm that the destination is <strong><code>02 / Trip Details</code></strong>.</li>
+<li>Keep the transition <strong>Instant</strong> for now; you will try <strong>Smart Animate</strong> in Section 6.</li>
+<li>On Trip Details, select <strong>back-button</strong> inside the Navigation Bar instance and add <strong>On click / On tap → Back</strong>.</li>
+<li>Preview: <strong>View trip</strong> opens the details; <strong>Back</strong> returns to the previous screen.</li>
+</ol>
+<h3>B. Select the existing Cancelled card variant</h3>
+<ol>
+<li>On <strong><code>03 – Screens</code></strong>, select the <strong>Trip / Card instance</strong> inside <strong><code>03 / Trip Cancelled</code></strong>.</li>
+<li>In the <strong>right sidebar</strong>, find the component property <strong><code>Status</code></strong>.</li>
+<li>Choose <strong><code>Cancelled</code></strong>. Confirm that the component instance shows its Cancelled wording and visual style.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Prototype action</th>
+<th>What it does</th>
+<th>In our example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Navigate to</strong></td>
+<td>Moves from one screen to another</td>
+<td>Upcoming Trips → Trip Details</td>
+</tr>
+<tr>
+<td><strong>Change to</strong></td>
+<td>Switches to another variant <strong>during an interaction</strong></td>
+<td>Concept only: On time → Changed within the same component set</td>
+</tr>
+<tr>
+<td><strong>Open overlay</strong></td>
+<td>Shows a frame over the current screen</td>
+<td>Red Alert notice</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Important difference:</strong> Choosing <strong>Cancelled</strong> in the right sidebar changes a <strong>design instance</strong>. It is <strong>not</strong> a prototype <strong>Change to</strong> action. We will <strong>not</strong> build an unnecessary Change to interaction just to set the final cancelled state.</p>
+</blockquote>
+</section>
+<section aria-labelledby="5-open-a-red-alert-overlay" class="chapter"><h2 id="5-open-a-red-alert-overlay">5. Open a Red Alert overlay</h2>
+<p><strong>21–27 min · An interruption without replacing the screen</strong></p>
+<ol>
+<li>On <code>03 – Screens</code>, create a separate <strong>Frame</strong> outside the phone screens. Name it <strong><code>Overlay / Red Alert</code></strong>. A starting size of approximately <strong>320 × 210 px</strong> is fine.</li>
+<li>Add a prominent title <strong>RED ALERT</strong>.</li>
+<li>Add the message <strong>“Shuttle S-04 has been cancelled. Boarding is suspended.”</strong></li>
+<li>Insert an <strong>instance</strong> of your <code>cta-button</code> component and change the label to <strong>View updated trip</strong>. Apply a clear, readable visual treatment; use both wording and color to communicate the warning.</li>
+<li>Select <strong>Simulate red alert</strong> on <code>02 / Trip Details</code> and drag a prototype connector to <strong><code>Overlay / Red Alert</code></strong>.</li>
+<li>Set <strong>On click / On tap → Open overlay</strong>. Position it at <strong>Center</strong>, enable a <strong>dimmed background</strong>, and turn off <strong>Close when clicking outside</strong> for this important notice.</li>
+<li>Select <strong>View updated trip</strong> within the overlay. Connect it with <strong>On click / On tap → Navigate to → <code>03 / Trip Cancelled</code></strong>.</li>
+<li>Preview the full sequence: <strong>View trip → Simulate red alert → View updated trip</strong>. Confirm that the destination shows the <strong>Cancelled</strong> card state.</li>
+</ol>
+<blockquote>
+<p><strong>Pressure-map connection:</strong> A red alert is an external interruption in the crew member's world. The interface must clearly tell them that boarding is no longer available, without leaving an apparently valid On time trip behind.</p>
+</blockquote>
+</section>
+<section aria-labelledby="6-add-smart-animate" class="chapter"><h2 id="6-add-smart-animate">6. Add Smart Animate</h2>
+<p><strong>27–32 min · Try a smoother transition</strong></p>
+<ol>
+<li>On <code>03 – Screens</code>, compare <strong><code>01 / Upcoming Trips</code></strong> and <strong><code>02 / Trip Details</code></strong>. The duplicated screens should have some matching layers.</li>
+<li>In the Layers panel, check that the shared elements have matching <strong>layer names AND corresponding positions in the layer hierarchy</strong>. For example, their Navigation Bar, Trip / Card, and content groups should be organized consistently.</li>
+<li>Select the existing <strong>View trip → Trip Details</strong> prototype connection.</li>
+<li>In Interaction details, change the transition from <strong>Instant</strong> to <strong>Smart Animate</strong>.</li>
+<li>Choose a short duration, such as <strong>300 ms</strong>, and a gentle easing option.</li>
+<li>Preview the transition. For a clearer demonstration, move or resize one matching element in Trip Details and preview again.</li>
+<li>If you see a fade rather than a smooth transition, check the <strong>names</strong>, <strong>nesting</strong>, and <strong>which properties changed</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Correction to remember:</strong> Smart Animate does <strong>not</strong> work on names alone. Matching names <strong>and hierarchy</strong> matter. Not every property or text replacement animates like position or size.</p>
+</blockquote>
+</section>
+<section aria-labelledby="7-preview-test-and-share-your-prototype" class="chapter"><h2 id="7-preview-test-and-share-your-prototype">7. Preview, test, and share your prototype</h2>
+<p><strong>32–36 min · Test the flow before you share it</strong></p>
+<ol>
+<li>In the <strong>Prototype</strong> tab, find the flow <strong><code>Shuttle status interruption</code></strong> and open its Preview. You can also use Present.</li>
+<li>Start on <strong><code>01 / Upcoming Trips</code></strong>, then try <strong>View trip → Simulate red alert → View updated trip</strong>.</li>
+<li>Confirm that the alert appears as an <strong>overlay</strong>, the final trip shows <strong>Cancelled</strong>, and no outdated boarding details look active.</li>
+<li>Test the <strong>Back</strong> button on secondary screens and confirm that the first screen has <strong>no visible Back</strong> control.</li>
+<li>If something does nothing, return to the design file and check the clickable layer, trigger, action, and destination.</li>
+<li>In presentation view, use <strong>Share prototype</strong> and <strong>Copy link</strong>. Check permissions so classmates can open it.</li>
+<li>Open the link separately to verify it starts at the <strong>correct flow starting point</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Tip:</strong> Share the <strong>prototype/flow link</strong>, not merely the design file URL. Available sharing controls may vary with Figma permissions and plan.</p>
+</blockquote>
+</section>
+<section aria-labelledby="completion-checklist" class="chapter"><h2 id="completion-checklist">Completion checklist</h2>
+<ul>
+<li class="task-list-item"><input aria-label="CTA component: Body / Regular , blue Action / Primary fill, white text, 8 px radius" class="task-list-item-checkbox" type="checkbox"/>CTA component: <code>Body / Regular</code>, blue <code>Action / Primary</code> fill, white text, 8 px radius</li>
+<li class="task-list-item"><input aria-label="Simulate red alert CTA is a red instance override , not a red main component" class="task-list-item-checkbox" type="checkbox"/><strong>Simulate red alert</strong> CTA is a <strong>red instance override</strong>, not a red main component</li>
+<li class="task-list-item"><input aria-label="Navigation Bar component includes status bar , back-button , Title , and profile-container" class="task-list-item-checkbox" type="checkbox"/>Navigation Bar component includes <strong>status bar</strong>, <strong>back-button</strong>, <strong>Title</strong>, and <strong>profile-container</strong></li>
+<li class="task-list-item"><input aria-label="Navigation Bar instances appear on all three screens" class="task-list-item-checkbox" type="checkbox"/>Navigation Bar instances appear on <strong>all three screens</strong></li>
+<li class="task-list-item"><input aria-label="Back is hidden only on Upcoming Trips" class="task-list-item-checkbox" type="checkbox"/>Back is <strong>hidden only on Upcoming Trips</strong></li>
+<li class="task-list-item"><input aria-label="View trip uses Navigate to" class="task-list-item-checkbox" type="checkbox"/><strong>View trip</strong> uses <strong>Navigate to</strong></li>
+<li class="task-list-item"><input aria-label="Final screen's Trip / Card instance uses Status: Cancelled" class="task-list-item-checkbox" type="checkbox"/>Final screen's Trip / Card instance uses <strong>Status: Cancelled</strong></li>
+<li class="task-list-item"><input aria-label="Red Alert uses Open overlay" class="task-list-item-checkbox" type="checkbox"/>Red Alert uses <strong>Open overlay</strong></li>
+<li class="task-list-item"><input aria-label="Overlay action goes to Trip Cancelled" class="task-list-item-checkbox" type="checkbox"/>Overlay action goes to <strong>Trip Cancelled</strong></li>
+<li class="task-list-item"><input aria-label="Smart Animate was previewed" class="task-list-item-checkbox" type="checkbox"/>Smart Animate was previewed</li>
+<li class="task-list-item"><input aria-label="Prototype link opens the intended starting screen" class="task-list-item-checkbox" type="checkbox"/>Prototype link opens the intended starting screen</li>
+</ul>
+</section>
+<section aria-labelledby="troubleshooting" class="chapter"><h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>First thing to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flow starts on the wrong screen</td>
+<td>Flow starting point on the top-level <code>01 / Upcoming Trips</code> frame</td>
+</tr>
+<tr>
+<td>Tap does nothing</td>
+<td>Interaction trigger, clickable instance, action, and destination</td>
+</tr>
+<tr>
+<td>Final card still says On time</td>
+<td>Select the final card instance; set <strong>Status: Cancelled</strong> in the right sidebar</td>
+</tr>
+<tr>
+<td>Alert replaces the whole screen</td>
+<td>Use <strong>Open overlay</strong>, not Navigate to</td>
+</tr>
+<tr>
+<td>Back is missing everywhere</td>
+<td>Hide the nested back-button in <strong>only the first instance</strong></td>
+</tr>
+<tr>
+<td>Navigation bar is inset or cropped</td>
+<td>Phone frame has <strong>0 padding</strong>; <code>screen-content</code> has <strong>16 px side padding</strong></td>
+</tr>
+<tr>
+<td>Smart Animate fades unexpectedly</td>
+<td>Matching layer names, hierarchy, and supported property changes</td>
+</tr>
+<tr>
+<td>Other CTA buttons also turned red</td>
+<td>You edited the <strong>main component</strong>; revert and override only the red-alert instance</td>
+</tr>
+<tr>
+<td>Classmates cannot open link</td>
+<td>Check prototype link permissions and flow URL</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section aria-labelledby="optional-independent-challenge" class="chapter"><h2 id="optional-independent-challenge">Optional independent challenge</h2>
+<p>Try an <strong>After delay</strong> trigger to display the Red Alert automatically, or prototype one more screen for an <strong>On time</strong> shuttle's boarding pass. Neither is required for this live demonstration.</p>
+</section>
+<section aria-labelledby="how-this-supports-the-starship-crew-app" class="chapter"><h2 id="how-this-supports-the-starship-crew-app">How this supports the Starship Crew App</h2>
+<p>For the team project, apply the prototyping techniques to the one flow your behavior statement is about. Your final prototype should work from a single link, show how a crew member responds to a real pressure, and include working navigation so viewers never have to leave the prototype to understand the flow.</p>
+<h3>Figma references</h3>
+<ul>
+<li><a href="https://help.figma.com/hc/en-us/articles/360039823894-Create-and-manage-prototype-flows">Create and manage prototype flows</a></li>
+<li><a href="https://help.figma.com/hc/en-us/articles/360061175334-Create-interactive-components-with-variants">Create interactive components with variants</a></li>
+<li><a href="https://help.figma.com/hc/en-us/articles/360039818254-Create-overlays-in-your-prototypes">Create overlays in your prototypes</a></li>
+<li><a href="https://help.figma.com/hc/en-us/articles/360039818874-Smart-animate-layers-between-frames">Smart animate layers between frames</a></li>
+<li><a href="https://help.figma.com/hc/en-us/articles/360040531773-Share-files-and-prototypes">Share files and prototypes</a></li>
+</ul>
+</section><div class="footer-next"><a href="index.html">← All workshops</a><a href="index.html">All workshops →</a></div></main></div><footer class="foot">Starship Crew App · UX Design workshops · Static HTML, ready for GitHub Pages. This student handout is an instructional adaptation of the course exercises.</footer></body></html>

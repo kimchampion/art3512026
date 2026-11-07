@@ -1,0 +1,329 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#13283d"><meta name="description" content="A step-by-step Figma exercise for text and color styles, Auto Layout, reusable trip cards, and variants."><title>Build Your First Starship App Component | Starship Crew Figma Workshops</title><style>
+500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{color-scheme:light;--ink:#172337;--text:#2c3850;--muted:#627086;--border:#dce4ed;--bg:#f5f7fa;--white:#fff;--accent:#1d6078;--accent-dark:#15485d;--navy:#13283d;--soft:#eaf4f5;--gold:#fff4dd;--shadow:0 15px 36px rgba(23,35,55,.07);--success-bg:#DDF4E5;--success-text:#216A43;--warning-bg:#F4ECDD;--warning-text:#6A3C21;--danger-bg:#F4DDDD;--danger-text:#6A2121}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px;line-height:1.65}a{color:var(--accent-dark);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #2e839e;outline-offset:3px}h1,h2,h3,h4,.brand,.stat-val{font-family:Manrope,'DM Sans',sans-serif;letter-spacing:-.025em;color:var(--ink)}h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.16;margin:14px 0 15px;font-weight:800}h2{font-size:1.65rem;line-height:1.24;margin:0 0 14px;font-weight:800;scroll-margin-top:88px}h3{font-size:1.17rem;line-height:1.35;margin:23px 0 9px;font-weight:750;scroll-margin-top:88px}h4{font-size:1rem;margin:18px 0 5px}p{margin:0 0 15px}ul,ol{padding-left:1.45rem;margin:8px 0 18px}li{padding-left:.2rem;margin:8px 0}li::marker{color:var(--accent)}strong{color:var(--ink);font-weight:700}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#edf2f6;border:1px solid #dce5ec;border-radius:5px;padding:1px 5px;font-size:.91em;color:#24455e;overflow-wrap:anywhere}table{width:100%;border-collapse:separate;border-spacing:0;margin:16px 0 22px;font-size:.92rem;border:1px solid var(--border);border-radius:11px;overflow:hidden}th,td{padding:10px 13px;vertical-align:top;text-align:left;border-bottom:1px solid var(--border)}th{background:#eaf1f6;color:#1d374e;font-weight:750}tr:last-child td{border-bottom:none}tr:nth-child(even) td{background:#fafcfe}blockquote{background:#eaf4f5;border-left:4px solid #298096;border-radius:0 10px 10px 0;padding:15px 17px;margin:20px 0 23px}blockquote p:last-child{margin-bottom:0}hr{border:0;border-top:1px solid var(--border);margin:27px 0}
+.skip-link{position:absolute;z-index:999;top:-100px;left:10px;background:#fff;color:#102b41;padding:12px 16px}.skip-link:focus{top:10px}.topnav{position:sticky;top:0;z-index:30;height:64px;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}.topnav-inner{max-width:1380px;margin:auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 28px}.brand{text-decoration:none;color:#16334b;font-weight:800;font-size:.94rem;display:flex;align-items:center;gap:10px;white-space:nowrap}.brand-mark{width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:#1a5b72;color:#fff;font-size:.8rem;letter-spacing:0}.toplinks{display:flex;gap:7px;align-items:center}.toplinks a{color:#40536b;text-decoration:none;font-size:.85rem;font-weight:700;border-radius:7px;padding:8px 10px}.toplinks a:hover,.toplinks a[aria-current=page]{background:#e8f2f6;color:#144c63}
+.hero{background:var(--navy);color:#fff}.hero-inner{max-width:1380px;margin:0 auto;padding:53px 28px 45px}.eyebrow{font-family:Manrope,sans-serif;font-size:.77rem;letter-spacing:.13em;text-transform:uppercase;color:#9bd1d4;font-weight:800}.hero h1{color:#fff;max-width:860px}.hero p{color:#c7d8e2;font-size:1.06rem;max-width:770px;margin-bottom:0}.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0}.chip{border:1px solid #4e6376;color:#d9e5ed;font-size:.78rem;font-weight:700;letter-spacing:.01em;padding:6px 11px;border-radius:999px}.chip.light{border-color:#c9d8e0;color:#426077;background:#f4f8f9}
+.page-grid{max-width:1380px;margin:0 auto;display:grid;grid-template-columns:245px minmax(0,890px);gap:34px;padding:32px 28px 70px;align-items:start}.sidebar{position:sticky;top:85px;max-height:calc(100vh - 99px);overflow-y:auto;padding:15px 8px 18px 0}.sidebar-title{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#78869b;font-weight:800;margin:10px 8px 12px}.toc-list{list-style:none;margin:0;padding:0}.toc-list li{margin:1px 0;padding:0}.toc-list a{display:block;text-decoration:none;border-radius:8px;padding:9px 10px;font-size:.84rem;line-height:1.33;color:#506078}.toc-list a:hover{background:#e9eff4;color:#17334b}.backtoc{margin:18px 8px;font-size:.84rem}.content{min-width:0}.intro-card{background:var(--white);padding:26px 30px;border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--border);margin:0 0 18px}.intro-card p:last-child{margin:0}.chapter{background:var(--white);border:1px solid var(--border);border-radius:15px;padding:26px 30px;margin:18px 0;box-shadow:var(--shadow)}.chapter>h2{padding-top:1px}.chapter p:first-of-type:has(strong){margin-top:5px}.chapter>h2+p>strong:first-child{color:#1c667b}.chapter ol>li{padding-left:.3rem}.chapter li::marker{font-weight:750}.footer-next{display:flex;gap:15px;flex-wrap:wrap;justify-content:space-between;padding:24px 0;border-top:1px solid var(--border)}.footer-next a{font-weight:750;text-decoration:none}.minor{font-size:.82rem;color:#65748a}.figure{border:1px solid #d9e3ea;background:#f7fafb;border-radius:13px;padding:20px;margin:17px 0 22px}.figure-caption{font-size:.79rem;color:#687990;margin-top:12px}.device{width:min(100%,300px);border-radius:25px;background:#fff;border:3px solid #536376;box-shadow:0 8px 19px rgba(15,35,50,.1);padding:9px 9px 18px;margin:auto}.device-notch{height:9px;width:77px;border-radius:10px;background:#536376;margin:3px auto 13px}.device-screen{background:#f1f4f6;border-radius:9px;min-height:230px;padding:14px}.demo-card{background:#fff;border:1px solid #d7dee7;border-radius:12px;padding:14px;box-shadow:0 3px 7px rgba(25,45,68,.03)}.demo-card h4{font-size:.84rem;margin:0;color:#273449}.demo-card .small{font-size:.73rem;color:#657186;margin:6px 0}.demo-card .row{display:flex;justify-content:space-between;gap:10px;font-size:.78rem;padding:7px 0;border-top:1px solid #e9edf2}.demo-card .row:first-of-type{border-top:0}.status{font-size:.67rem;font-weight:750;display:inline-block;padding:3px 8px;border-radius:6px;white-space:nowrap}.status.success{background:var(--success-bg);color:var(--success-text)}.status.warning{background:var(--warning-bg);color:var(--warning-text)}.status.danger{background:var(--danger-bg);color:var(--danger-text)}.status-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.status-sample{background:#fff;border:1px solid var(--border);border-radius:10px;padding:13px 10px;text-align:center}.status-sample p{font-size:.75rem;margin:7px 0 0}.flow-strip{display:flex;align-items:stretch;gap:8px;justify-content:space-between;flex-wrap:wrap}.flow-step{flex:1;min-width:135px;border:1px solid #d0dfe7;background:#fff;border-radius:10px;padding:13px}.flow-step strong{font-size:.85rem}.flow-step small{display:block;color:#6b7990;font-size:.72rem}.flow-arrow{align-self:center;color:#457c8c;font-size:1.4rem}.demo-cta{display:inline-block;background:#2563EB;border-radius:8px;padding:9px 17px;color:#fff;font-weight:750;font-size:.8rem}.demo-cta.alert{background:#B42318}.demo-navbar{width:min(100%,350px);background:#fff;border:1px solid #d7e2eb;border-radius:12px;margin:auto;overflow:hidden}.demo-statusbar{height:23px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;font-size:10px;color:#40536b;background:#f6f8fa}.demo-navcontent{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px}.demo-navcontent>span{font-size:13px;color:#30445c}.demo-navcontent strong{font-size:14px}.pill-link{text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:11px 15px;border-radius:9px;background:#1b6579;color:#fff;font-weight:700}.pill-link:hover{background:#144e60;color:#fff}.note-small{font-size:.86rem;color:#5e7085}.checkgrid{list-style:none;padding:0;margin:15px 0}.checkgrid li{margin:8px 0;padding:0}.checkgrid label{cursor:pointer;display:flex;align-items:baseline;gap:10px}.checkgrid input{accent-color:#1b667c;width:17px;height:17px;flex:0 0 17px;transform:translateY(3px)}.checkgrid label:has(input:checked){color:#627789;text-decoration:line-through}.foot{padding:20px 28px 45px;max-width:1380px;margin:auto;color:#68778d;font-size:.83rem}
+.home-hero{min-height:330px}.home-container{max-width:1110px;margin:0 auto;padding:38px 26px 70px}.home-kicker{font-weight:800;letter-spacing:.09em;color:#597388;text-transform:uppercase;font-size:.75rem}.home-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.home-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:29px;box-shadow:var(--shadow)}.home-card h2{font-size:1.5rem;margin:10px 0 9px}.home-card p{color:#56677e}.home-num{display:inline-flex;width:40px;height:40px;border-radius:11px;background:#e5f2f3;color:#14576e;align-items:center;justify-content:center;font-weight:800;font-size:1.05rem}.home-details{margin:22px 0;padding:21px 25px;background:#fff;border:1px solid var(--border);border-radius:14px}
+@media(max-width:1000px){.page-grid{grid-template-columns:210px minmax(0,1fr);gap:23px}.intro-card,.chapter{padding:23px 23px}}
+@media(max-width:740px){.topnav-inner{padding:0 14px}.brand{font-size:.82rem}.toplinks a{font-size:.76rem;padding:7px 6px}.hero-inner{padding:36px 18px}.page-grid{display:block;padding:18px 14px 45px}.sidebar{position:static;max-height:none;overflow:visible;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px;margin:0 0 17px}.toc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px}.toc-list a{font-size:.79rem;padding:8px}.intro-card,.chapter{padding:21px 18px}.status-list{grid-template-columns:1fr}.home-grid{grid-template-columns:1fr}.home-container{padding:25px 15px 45px}.flow-strip{display:block}.flow-step{margin:9px 0}.flow-arrow{text-align:center;display:block;transform:rotate(90deg)}table{display:block;overflow-x:auto;white-space:normal}th,td{min-width:110px}h2{font-size:1.42rem}h1{font-size:2.05rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.topnav,.sidebar,.pill-link,.footer-next,.skip-link{display:none!important}body{font-size:11pt;background:#fff;color:#000}.hero{background:#fff!important;color:#000!important}.hero-inner{padding:0 0 12px}.hero h1,.hero p,.eyebrow{color:#000!important}.hero-meta .chip{color:#222;border-color:#666}.page-grid{display:block;padding:0;max-width:none}.intro-card,.chapter{box-shadow:none;border:0;border-bottom:1px solid #aaa;border-radius:0;padding:10px 0;margin:0}.chapter{break-inside:avoid-page}.chapter li{break-inside:avoid}.chapter h2,.chapter h3{break-after:avoid}a{text-decoration:underline}.foot{padding:0}.figure{break-inside:avoid}table{font-size:9pt}}
+
+/* Accessible, uncluttered student checklists and narrow-screen nav */
+.task-list-item{list-style:none;margin-left:-18px}.task-list-item input{margin-right:8px;accent-color:#1b667c;width:16px;height:16px;vertical-align:middle}@media(max-width:740px){.topnav-inner{gap:8px}.brand{max-width:147px;overflow:hidden;text-overflow:ellipsis}.toplinks{min-width:0;overflow-x:auto;white-space:nowrap;scrollbar-width:none}.toplinks::-webkit-scrollbar{display:none}}
+
+</style></head><body><a class="skip-link" href="#main">Skip to tutorial</a><header class="topnav"><div class="topnav-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">✦</span> Starship Crew · Figma</a><nav class="toplinks" aria-label="Main navigation"><a href="index.html">All workshops</a><a href="tutorial-01-building-components.html" aria-current="page">01 · Components</a><a href="tutorial-02-linking-a-flow.html" >02 · Prototype</a></nav></div></header>
+<div class="hero"><div class="hero-inner"><div class="eyebrow">Workshop 01 · Build</div><h1>Build Your First Starship App Component</h1><p>A step-by-step Figma exercise for text and color styles, Auto Layout, reusable trip cards, and variants.</p><div class="hero-meta"><span class="chip">About 30 minutes</span><span class="chip">Individual Figma exploration file</span><span class="chip">Starship Crew App</span></div></div></div>
+<div class="page-grid"><aside class="sidebar" aria-label="On this page"><p class="sidebar-title">On this page</p><ul class="toc-list"><li><a href="#before-you-begin">Before you begin</a></li><li><a href="#1-create-your-figma-exploration-file">1. Create your Figma exploration file</a></li><li><a href="#2-create-a-phone-frame-with-a-layout-guide">2. Create a phone frame with a layout guide</a></li><li><a href="#3-create-your-atoms-text-and-color-styles">3. Create your atoms: text and color styles</a></li><li><a href="#4-build-a-reusable-detail-row-molecule">4. Build a reusable detail-row molecule</a></li><li><a href="#5-assemble-the-trip-card-organism">5. Assemble the trip-card organism</a></li><li><a href="#6-create-a-card-component-with-three-variants">6. Create a card component with three variants</a></li><li><a href="#7-optional-independent-challenge-a-second-language">7. Optional independent challenge: a second language</a></li><li><a href="#end-of-class-checklist">End-of-class checklist</a></li><li><a href="#connect-this-to-your-team-project">Connect this to your team project</a></li></ul><p class="backtoc"><a href="index.html">← Workshop home</a></p></aside><main id="main" class="content"><div class="intro-card"><p><strong>How to use this page:</strong> Follow each numbered step in Figma. You can jump between sections using the topic list, or print this page from your browser. The exercises use your own practice file; your team determines its separate project organization.</p></div><section aria-labelledby="before-you-begin" class="chapter"><h2 id="before-you-begin">Before you begin</h2>
+<p>This is an <strong>individual practice exercise</strong> for the Starship Crew App project. Each student works in their own Figma exploration file—not in the shared team project. The reusable parts you create today may later inform your team's design decisions.</p>
+<p><strong>Today's sample trip:</strong> Shuttlecraft Trip S-04 · Destination: Starbase 12 · Departure: 08:30 · Boarding bay: Bay 4 · Status: On time.</p>
+<p><strong>The seven activities (about 30 minutes):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>What you'll have</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–3 min</td>
+<td>Exploration file</td>
+<td>Your own <code>Shuttlecraft Trips</code> file</td>
+</tr>
+<tr>
+<td>3–7 min</td>
+<td>Phone frame and guide</td>
+<td>402 × 874 mobile frame</td>
+</tr>
+<tr>
+<td>7–12 min</td>
+<td>Text and color styles</td>
+<td>Reusable type and semantic styles</td>
+</tr>
+<tr>
+<td>12–17 min</td>
+<td>Detail-row molecule</td>
+<td>Auto Layout row component</td>
+</tr>
+<tr>
+<td>17–22 min</td>
+<td>Trip-card organism</td>
+<td>Auto Layout card</td>
+</tr>
+<tr>
+<td>22–27 min</td>
+<td>Component variants</td>
+<td>On time / Changed / Cancelled</td>
+</tr>
+<tr>
+<td>27–30 min</td>
+<td>Language challenge preview</td>
+<td>Optional English + Spanish variants</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section aria-labelledby="1-create-your-figma-exploration-file" class="chapter"><h2 id="1-create-your-figma-exploration-file">1. Create your Figma exploration file</h2>
+<p><strong>0–3 min · Individual setup</strong></p>
+<ol>
+<li>Open Figma and navigate to the team <strong>2026 UX Design (Fall)</strong>.</li>
+<li>Open your assigned team folder: <strong>Team [number]</strong>.</li>
+<li>Open the existing folder named <strong>Explorations &amp; Demo</strong>.</li>
+<li>Create a new <strong>Figma Design</strong> file in this folder.</li>
+<li>Name it <strong><code>Shuttlecraft Trips</code></strong>. You do <strong>not</strong> need to add your name to the filename.</li>
+<li>Create three Figma <strong>Pages</strong> using the Pages section of the left sidebar:<ul>
+<li><code>01 – Foundations</code></li>
+<li><code>02 – Components</code></li>
+<li><code>03 – Screens</code></li>
+</ul>
+</li>
+<li>Keep this file for future demos. You do not need to invite teammates to your personal practice file.</li>
+</ol>
+<blockquote>
+<p><strong>Optional team folder example:</strong> Under <code>2026 UX Design (Fall) → Starship Champion (example)</code>, the instructor has <strong>Explorations &amp; Demos</strong>, <strong>UI</strong>, <strong>Foundation</strong>, and <strong>Archive</strong> folders. Your team does not have to copy that structure. Decide together what will work best for your shared project.</p>
+</blockquote>
+</section>
+<section aria-labelledby="2-create-a-phone-frame-with-a-layout-guide" class="chapter"><h2 id="2-create-a-phone-frame-with-a-layout-guide">2. Create a phone frame with a layout guide</h2>
+<p><strong>3–7 min · A responsive structure for the card—and next workshop's navigation bar</strong></p>
+<ol>
+<li><p>Open <code>03 – Screens</code>. Press <strong>F</strong> to select the <strong>Frame</strong> tool.</p>
+</li>
+<li><p>Choose a phone preset sized <strong>402 × 874 px</strong>, or enter those dimensions manually.</p>
+</li>
+<li><p>Rename the frame <strong><code>Shuttlecraft Trips</code></strong>.</p>
+</li>
+<li><p>With the phone selected, find <strong>Layout guide</strong> (formerly <em>Layout grid</em>) in the right sidebar. Click <strong>+</strong>.</p>
+</li>
+<li><p>Change the guide from a uniform grid to <strong>Columns</strong>, then set:</p>
+<p>| Property | Setting |
+|---|---|
+| Count | 4 |
+| Type | Stretch |
+| Margin | 16 px |
+| Gutter | 16 px |</p>
+</li>
+<li><p>Add <strong>vertical Auto Layout</strong> to the phone frame using <strong>Shift + A</strong>. Keep the phone frame <strong>402 × 874</strong>, with <strong>0 px padding</strong> and <strong>0 px gap</strong>. This lets a full-width navigation bar fit above the content in Workshop 2.</p>
+</li>
+<li><p>Inside the phone frame, create a child frame named <strong><code>screen-content</code></strong> and apply <strong>vertical Auto Layout</strong>. Set its width to <strong>Fill container</strong>, height to <strong>Hug contents</strong>, and horizontal padding to <strong>16 px</strong>. Use a suitable vertical gap, such as <strong>16 px</strong>.</p>
+</li>
+<li><p>We will place the trip-card instance inside <code>screen-content</code>. It should use <strong>Fill container</strong> width and <strong>Hug contents</strong> height.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Why both?</strong> The <strong>Layout guide</strong> is a visual alignment aid. <strong>Auto Layout</strong> controls how elements respond when content or available space changes. We are leaving the <em>outer</em> phone frame unpadded so the Navigation Bar in Workshop 2 can span the full width.</p>
+</blockquote>
+</section>
+<section aria-labelledby="3-create-your-atoms-text-and-color-styles" class="chapter"><h2 id="3-create-your-atoms-text-and-color-styles">3. Create your atoms: text and color styles</h2>
+<p><strong>7–12 min · Shared visual decisions</strong></p>
+<h3>A. Make the text styles</h3>
+<ol>
+<li>Open <code>01 – Foundations</code>. Press <strong>T</strong> to create a text layer and type <strong>Shuttlecraft Trips</strong>.</li>
+<li>Choose a sans-serif font, such as <strong>Inter</strong>, and set it to <strong>20 px / Semibold</strong>.</li>
+<li>In the <strong>Typography</strong> section of the right sidebar, open the style picker and create a text style named <strong><code>Heading / Medium</code></strong>.</li>
+<li>Create a second text layer, <strong>Departure</strong>, at <strong>16 px / Regular</strong>.</li>
+<li>Save it as <strong><code>Body / Regular</code></strong>.</li>
+</ol>
+<h3>B. Make the color styles</h3>
+<ol>
+<li>Press <strong>R</strong> and draw a small rectangle. Set its <strong>Fill</strong> to <strong><code>#1F2937</code></strong>.</li>
+<li>In the Fill style picker, create a style named <strong><code>Text / Primary</code></strong>.</li>
+<li>Repeat to create <strong><code>Surface / Default</code></strong> (<code>#FFFFFF</code>) and <strong><code>Action / Primary</code></strong> (<code>#2563EB</code>).</li>
+<li>Create the <strong>six additional semantic styles</strong> shown below. These styles have meanings that can be reused beyond the shuttle card.</li>
+<li>Apply <code>Body / Regular</code> and <code>Text / Primary</code> to your sample <strong>Departure</strong> text layer.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Color style</th>
+<th>Hex value</th>
+<th>Suggested use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Text / Primary</code></td>
+<td><code>#1F2937</code></td>
+<td>Main text</td>
+</tr>
+<tr>
+<td><code>Surface / Default</code></td>
+<td><code>#FFFFFF</code></td>
+<td>Default card background</td>
+</tr>
+<tr>
+<td><code>Action / Primary</code></td>
+<td><code>#2563EB</code></td>
+<td>Primary action</td>
+</tr>
+<tr>
+<td><code>Surface/Success</code></td>
+<td><code>#DDF4E5</code></td>
+<td>On time badge background</td>
+</tr>
+<tr>
+<td><code>Surface/Warning</code></td>
+<td><code>#F4ECDD</code></td>
+<td>Changed badge background</td>
+</tr>
+<tr>
+<td><code>Surface/Danger</code></td>
+<td><code>#F4DDDD</code></td>
+<td>Cancelled badge background</td>
+</tr>
+<tr>
+<td><code>Text/Success</code></td>
+<td><code>#216A43</code></td>
+<td>On time badge text</td>
+</tr>
+<tr>
+<td><code>Text/Warning</code></td>
+<td><code>#6A3C21</code></td>
+<td>Changed badge text</td>
+</tr>
+<tr>
+<td><code>Text/Danger</code></td>
+<td><code>#6A2121</code></td>
+<td>Cancelled badge text</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Teaching point:</strong> <code>Surface / Default</code> is the neutral surface. <strong>Success, Warning, and Danger</strong> are <em>semantic</em> style names, while <strong>On time, Changed, and Cancelled</strong> will be the <em>component variant</em> names. They serve different purposes.</p>
+</blockquote>
+</section>
+<section aria-labelledby="4-build-a-reusable-detail-row-molecule" class="chapter"><h2 id="4-build-a-reusable-detail-row-molecule">4. Build a reusable detail-row molecule</h2>
+<p><strong>12–17 min · Horizontal Auto Layout</strong></p>
+<ol>
+<li>Open <code>02 – Components</code> and create two text layers: <strong>Departure</strong> and <strong>08:30</strong>.</li>
+<li>Apply <strong><code>Body / Regular</code></strong> and <strong><code>Text / Primary</code></strong> to each layer.</li>
+<li>Select both and press <strong>Shift + A</strong> to create an Auto Layout frame.</li>
+<li>Set the direction to <strong>Horizontal</strong>, gap to <strong>8 px</strong>, height to <strong>Hug contents</strong>, vertical padding to <strong>8 px</strong>, and horizontal padding to <strong>0 px</strong>.</li>
+<li>If building the row by itself, you may temporarily preview it at <strong>338 px</strong> wide. This is not a fixed requirement for the reusable row.</li>
+<li>Select <strong>Departure</strong> inside the row and set its width to <strong>Fill container</strong>. Keep <strong>08:30</strong> sized to its contents.</li>
+<li>Rename the frame <strong><code>Trip / Detail Row</code></strong>.</li>
+<li>Select the row and choose <strong>Create component</strong> (Mac: <strong>Option + Command + K</strong>).</li>
+<li>Duplicate the component as an <strong>instance</strong>, and change its labels to <strong>Boarding bay</strong> and <strong>Bay 4</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Quick test:</strong> Change <strong>Departure</strong> to <strong>Scheduled departure</strong>. Once the row is placed inside the trip-card Auto Layout container, its width should <strong>Fill container</strong>; longer labels can wrap. No minimum height is needed.</p>
+</blockquote>
+</section>
+<section aria-labelledby="5-assemble-the-trip-card-organism" class="chapter"><h2 id="5-assemble-the-trip-card-organism">5. Assemble the trip-card organism</h2><figure aria-label="Illustration of the shuttle card" class="figure">
+<div class="device"><div aria-hidden="true" class="device-notch"></div><div class="device-screen"><div class="demo-card"><div style="display:flex;justify-content:space-between;align-items:center;gap:9px"><h4>Shuttlecraft Trip S-04</h4><span class="status success">On time</span></div><p class="small">Destination: Starbase 12</p><div class="row"><span>Departure</span><strong>08:30</strong></div><div class="row"><span>Boarding bay</span><strong>Bay 4</strong></div></div></div></div><figcaption class="figure-caption">Sample layout for practice. Teams can make different design decisions for their actual projects.</figcaption></figure>
+<p><strong>17–22 min · Vertical Auto Layout</strong></p>
+<h3>A. Make a status label</h3>
+<ol>
+<li>On <code>02 – Components</code>, create a text layer reading <strong>On time</strong>.</li>
+<li>Select it and press <strong>Shift + A</strong>.</li>
+<li>Set <strong>horizontal padding 10 px</strong>, <strong>vertical padding 6 px</strong>, and both width and height to <strong>Hug contents</strong>.</li>
+<li>Apply <strong><code>Surface/Success</code></strong> to the container fill and <strong><code>Text/Success</code></strong> to the text fill.</li>
+<li>Set the corner radius to <strong>6 px</strong> and rename the frame <strong><code>Trip / Status Label</code></strong>.</li>
+</ol>
+<h3>B. Assemble the card</h3>
+<ol>
+<li>Add heading text <strong>Shuttlecraft Trip S-04</strong> with <strong><code>Heading / Medium</code></strong>.</li>
+<li>Add secondary text <strong>Destination: Starbase 12</strong> with <strong><code>Body / Regular</code></strong>.</li>
+<li>Place the status label below the text.</li>
+<li>Add two <strong>instances</strong> of <code>Trip / Detail Row</code>: <strong>Departure / 08:30</strong> and <strong>Boarding bay / Bay 4</strong>.</li>
+<li>Select the card's top-level elements and press <strong>Shift + A</strong> to create a <strong>Vertical</strong> Auto Layout frame.</li>
+<li>Set gap to <strong>12 px</strong>, padding to <strong>16 px on all sides</strong>, corner radius to <strong>12 px</strong>, and height to <strong>Hug contents</strong>.</li>
+<li>Apply <strong><code>Surface / Default</code></strong> as the card fill and add a subtle <strong>1 px border</strong>.</li>
+<li>Name the assembled frame <strong><code>Trip / Card</code></strong>.</li>
+<li>If working on the component by itself, you may preview it at <strong>370 px</strong> wide. When using a card <strong>instance</strong> inside <code>screen-content</code>, set it to <strong>Fill container</strong> width and <strong>Hug contents</strong> height.</li>
+<li>Set both nested detail rows to <strong>Fill container</strong> width and <strong>Hug contents</strong> height.</li>
+</ol>
+<blockquote>
+<p><strong>Sizing note:</strong> A 402 px phone with 16 px left/right padding leaves <strong>370 px</strong> for the card. That width should result from <strong>Fill container</strong>, not from hardcoding every card to 370 px. You do <strong>not</strong> need to set a minimum width or minimum height for this exercise.</p>
+</blockquote>
+</section>
+<section aria-labelledby="6-create-a-card-component-with-three-variants" class="chapter"><h2 id="6-create-a-card-component-with-three-variants">6. Create a card component with three variants</h2><figure class="figure"><div class="status-list"><div class="status-sample"><span class="status success">On time</span><p>08:30 · Bay 4</p></div><div class="status-sample"><span class="status warning">Changed</span><p>09:15 · Bay 6</p></div><div class="status-sample"><span class="status danger">Cancelled</span><p>Boarding suspended</p></div></div><figcaption class="figure-caption">Three values of the same Status component property. The labels communicate meaning alongside color.</figcaption></figure>
+<p><strong>22–27 min · One component, different states</strong></p>
+<ol>
+<li>Select <strong><code>Trip / Card</code></strong> and choose <strong>Create component</strong>.</li>
+<li>Use <strong>Add variant</strong> twice so the component set has <strong>three</strong> variants.</li>
+<li>Select the component set and name the variant property <strong><code>Status</code></strong>.</li>
+<li>Set the three values to <strong><code>On time</code></strong>, <strong><code>Changed</code></strong>, and <strong><code>Cancelled</code></strong>.</li>
+<li>Update each main variant using the matching semantic styles and content:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Status variant</th>
+<th>Label styles</th>
+<th>Trip details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On time</strong></td>
+<td><code>Surface/Success</code> + <code>Text/Success</code></td>
+<td>Departure 08:30; Bay 4</td>
+</tr>
+<tr>
+<td><strong>Changed</strong></td>
+<td><code>Surface/Warning</code> + <code>Text/Warning</code></td>
+<td>Departure 09:15; Bay 6</td>
+</tr>
+<tr>
+<td><strong>Cancelled</strong></td>
+<td><code>Surface/Danger</code> + <code>Text/Danger</code></td>
+<td>State clearly that the mission is cancelled; boarding suspended</td>
+</tr>
+</tbody>
+</table>
+<ol start="6">
+<li>Open <code>03 – Screens</code>. In <strong>Assets</strong>, find the <strong>Trip / Card</strong> component and drag an instance into your <code>screen-content</code> frame.</li>
+<li>Set that instance to <strong>Fill container</strong> width and <strong>Hug contents</strong> height.</li>
+<li>Select the card instance. In the right sidebar, use the <strong>Status</strong> dropdown to switch between <strong>On time</strong>, <strong>Changed</strong>, and <strong>Cancelled</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Important:</strong> Do not communicate the state using color alone. Keep the text label visible. You will select the <strong>Cancelled</strong> variant on the final prototype screen in Workshop 2.</p>
+</blockquote>
+</section>
+<section aria-labelledby="7-optional-independent-challenge-a-second-language" class="chapter"><h2 id="7-optional-independent-challenge-a-second-language">7. Optional independent challenge: a second language</h2>
+<p><strong>27–30 min · Instructor previews; students can finish independently</strong></p>
+<ol>
+<li><p>In class, briefly change <strong>Departure</strong> to <strong>Salida programada</strong> and observe how the Auto Layout row responds.</p>
+</li>
+<li><p><strong>Challenge:</strong> Back on <code>02 – Components</code>, select the Trip / Card component set. Add a <strong>second variant property</strong> named <strong><code>Language</code></strong> with values <strong><code>English</code></strong> and <strong><code>Español</code></strong>.</p>
+</li>
+<li><p>Create Spanish counterparts for all three statuses. The component set will have <strong>six combinations</strong>: three <code>Status</code> values × two <code>Language</code> values.</p>
+</li>
+<li><p>Translate each label, including the status label. For example:</p>
+<p>| English | Spanish |
+|---|---|
+| Shuttlecraft trip | Viaje en nave auxiliar |
+| Destination | Destino |
+| Departure | Salida programada |
+| Boarding bay | Bahía de embarque |
+| On time | A tiempo |
+| Changed | Modificado |
+| Cancelled | Cancelado |</p>
+</li>
+<li><p>Test card instances in both languages inside phone frames. Let longer text <strong>wrap</strong>; keep the card and rows <strong>Fill container</strong> in width and <strong>Hug contents</strong> in height.</p>
+</li>
+<li><p>Fix anything that clips or overlaps. The status label should continue using <strong>Hug contents</strong>, so it can stretch with translated text.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Assignment connection:</strong> The <strong>language variant exercise is optional</strong> for this demo, but the <strong>Starship Crew App project still requires screens in at least two languages</strong>. Your team may choose a different approach to localization.</p>
+</blockquote>
+</section>
+<section aria-labelledby="end-of-class-checklist" class="chapter"><h2 id="end-of-class-checklist">End-of-class checklist</h2>
+<ul>
+<li class="task-list-item"><input aria-label="My own Shuttlecraft Trips file in Explorations &amp; Demo , with three pages" class="task-list-item-checkbox" type="checkbox"/>My own <strong>Shuttlecraft Trips</strong> file in <strong>Explorations &amp; Demo</strong>, with three pages</li>
+<li class="task-list-item"><input aria-label="A 402 × 874 phone frame and four-column guide" class="task-list-item-checkbox" type="checkbox"/>A <strong>402 × 874</strong> phone frame and four-column guide</li>
+<li class="task-list-item"><input aria-label="Two text styles and nine color styles" class="task-list-item-checkbox" type="checkbox"/>Two text styles and <strong>nine color styles</strong></li>
+<li class="task-list-item"><input aria-label="A reusable Trip / Detail Row component" class="task-list-item-checkbox" type="checkbox"/>A reusable <strong>Trip / Detail Row</strong> component</li>
+<li class="task-list-item"><input aria-label="A card that uses Auto Layout and adjusts to its container" class="task-list-item-checkbox" type="checkbox"/>A card that uses Auto Layout and adjusts to its container</li>
+<li class="task-list-item"><input aria-label="A Trip / Card component with On time / Changed / Cancelled variants" class="task-list-item-checkbox" type="checkbox"/>A <strong>Trip / Card</strong> component with <strong>On time / Changed / Cancelled</strong> variants</li>
+<li class="task-list-item"><input aria-label="Optional: Language variant property with English and Spanish combinations" class="task-list-item-checkbox" type="checkbox"/>Optional: <code>Language</code> variant property with English and Spanish combinations</li>
+</ul>
+</section>
+<section aria-labelledby="connect-this-to-your-team-project" class="chapter"><h2 id="connect-this-to-your-team-project">Connect this to your team project</h2>
+<p>The shuttlecraft card is a <strong>practice example</strong>, not a requirement to duplicate the instructor's design. Your team can reuse useful patterns for boarding passes, ID, pay, sickbay, messages, and other sections. Discuss your team's shared component conventions before moving work from your exploration file into the final team project.</p>
+</section><div class="footer-next"><a href="index.html">← All workshops</a><a href="tutorial-02-linking-a-flow.html">Continue to Workshop 02 →</a></div></main></div><footer class="foot">Starship Crew App · UX Design workshops · Static HTML, ready for GitHub Pages. This student handout is an instructional adaptation of the course exercises.</footer></body></html>
